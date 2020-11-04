@@ -1,10 +1,15 @@
 import 'package:data_structures/components/drawer.dart';
+import 'package:data_structures/components/working.dart';
 import 'package:data_structures/screens/stack.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
       home: HomePage(),
-      routes: {'/home': (_) => HomePage(), '/stack': (_) => StackScreen()},
+      routes: {
+        '/home': (_) => HomePage(),
+        '/stack': (_) => StackScreen(),
+        '/working': (_) => WorkingScreen()
+      },
       initialRoute: '/home',
     ));
 
