@@ -110,6 +110,20 @@ class _WorkingScreenState extends State<WorkingScreen> {
                   )
                 ],
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text('MAX SIZE OF STACK -> 5\n',style: TextStyle(fontSize: 20),),
+                  Text('CURRENT SIZE -> ' + s.length.toString() + '\n',style: TextStyle(fontSize: 20),),
+                  Text(
+                    'STACK -> ' + s.toString(),
+                    style: TextStyle(fontSize: 20),
+                  )
+                ],
+              )
             ],
           ),
         ));
