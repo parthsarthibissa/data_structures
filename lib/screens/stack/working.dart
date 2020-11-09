@@ -123,7 +123,10 @@ class _WorkingScreenState extends State<WorkingScreen> {
                     style: TextStyle(fontSize: 20),
                   )
                 ],
-              )
+              ),
+              RaisedButton(onPressed: (){
+                return Navigator.of(context).pushNamed('/scomp');
+              },child: Text('Applications And Complexity'),)
             ],
           ),
         ));

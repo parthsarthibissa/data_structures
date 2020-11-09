@@ -13,6 +13,12 @@ class MyAppDrawer extends StatelessWidget {
           onTap: () {
             return Navigator.of(context).pushNamed('/stack');
           },
+        ),
+        ListTile(
+          title: Text('Queue'),
+          onTap: () {
+            return Navigator.of(context).pushNamed('/queue');
+          },
         )
       ],
     ));
