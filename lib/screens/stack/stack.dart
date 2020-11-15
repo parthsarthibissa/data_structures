@@ -10,6 +10,7 @@ class _StackScreenState extends State<StackScreen> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      image: Image.asset('assets/Stack.png'),
       appBarTitle: 'Stack',
       dsaTitle: 'Stack',
       dsaData:

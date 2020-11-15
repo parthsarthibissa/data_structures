@@ -1,3 +1,4 @@
+import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 
 class DetailCard extends StatelessWidget {
@@ -18,13 +19,14 @@ class DetailCard extends StatelessWidget {
           child: SizedBox(
             child: Column(
               children: [
-                Text(
-                  this.title + '\n',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                MyTextStyle(
+                  text: this.title + '\n',
+                  size: 40,
                 ),
-                Text(this.data,
-                    style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
+                MyTextStyle(
+                  text: this.data,
+                  size: 25,
+                ),
                 button
               ],
             ),

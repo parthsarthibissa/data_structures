@@ -10,6 +10,7 @@ class _QueueScreenState extends State<QueueScreen> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      image: Image.asset('assets/Queue.png'),
       appBarTitle: 'Queue',
       dsaTitle: 'Queue',
       dsaData:

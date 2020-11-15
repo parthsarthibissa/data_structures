@@ -1,5 +1,5 @@
 import 'dart:collection';
-
+import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -29,7 +29,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
     q.add(a);
     setState(() {
       if (q.length == 5) {
-        fullmessage = 'Queue Overflow';
+        fullmessage = 'Queue Overflow !!';
         emptymessage = '';
         enqenable = false;
       } else if (front == -1 && rear == -1) {
@@ -44,7 +44,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
         c = c + 1;
         fullmessage = '';
         emptymessage = '';
-        
+
         deqenable = true;
       }
     });
@@ -56,7 +56,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
     setState(() {
       if (front > rear) {
         enqenable = true;
-        emptymessage = 'Queue Underflow';
+        emptymessage = 'Queue Underflow !!';
         fullmessage = 'Oops! front>rear ';
         front = -1;
         rear = -1;
@@ -90,7 +90,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Queue'),
+          title: MyTextStyle(text: 'Queue'),
           centerTitle: true,
         ),
         body: SizedBox(
@@ -105,14 +105,14 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                         width: 500,
                         height: 500,
                         alignment: Alignment.center,
-                        child: Text(
-                          'FRONT -> ' + front.toString(),
-                          style: TextStyle(fontSize: 50),
+                        child: MyTextStyle(
+                          text: 'FRONT -> ' + front.toString(),
+                          size: 50,
                         ),
                         margin: EdgeInsets.all(100),
                         decoration: BoxDecoration(
                             color: Colors.white30,
-                            shape: BoxShape.rectangle,
+                            shape: BoxShape.circle,
                             border: Border.all(
                                 color: Colors.blue,
                                 width: 6,
@@ -121,14 +121,14 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                         width: 500,
                         height: 500,
                         alignment: Alignment.center,
-                        child: Text(
-                          'REAR -> ' + rear.toString(),
-                          style: TextStyle(fontSize: 50),
+                        child: MyTextStyle(
+                          text: 'REAR -> ' + rear.toString(),
+                          size: 50,
                         ),
                         margin: EdgeInsets.all(100),
                         decoration: BoxDecoration(
                             color: Colors.white30,
-                            shape: BoxShape.rectangle,
+                            shape: BoxShape.circle,
                             border: Border.all(
                                 color: Colors.blue,
                                 width: 6,
@@ -141,17 +141,17 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                 children: [
                   RaisedButton(
                     onPressed: enqenable ? () => enq(c) : null,
-                    child: Text('ENQUEUE'),
+                    child: MyTextStyle(text: 'ENQUEUE'),
                   ),
                   RaisedButton(
                     onPressed: deqenable ? () => deq() : null,
-                    child: Text('DEQUEUE'),
+                    child: MyTextStyle(text: 'DEQUEUE'),
                   ),
                   RaisedButton(
                     onPressed: () {
                       clearQueue();
                     },
-                    child: Text('Clear Queue'),
+                    child: MyTextStyle(text: 'Clear Queue'),
                   )
                 ],
               ),
@@ -161,28 +161,31 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'MAX SIZE OF QUEUE -> 5\n',
-                    style: TextStyle(fontSize: 20),
+                  MyTextStyle(
+                    text: 'MAX SIZE OF QUEUE -> 5\n',
+                    size: 20,
                   ),
-                  Text(
-                    'CURRENT SIZE -> ' + q.length.toString() + '\n',
-                    style: TextStyle(fontSize: 20),
+                  MyTextStyle(
+                    text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
+                    size: 20,
                   ),
-                  Text(
-                    'QUEUE -> ' + q.toString(),
-                    style: TextStyle(fontSize: 20),
+                  MyTextStyle(
+                    text: 'QUEUE -> ' + q.toString(),
+                    size: 20,
                   ),
-                  Text(
-                    '\n' + fullmessage + emptymessage + '\n',
-                    style: TextStyle(color: Colors.red),
+                  MyTextStyle(
+                    text: '\n' + fullmessage + emptymessage + '\n',
+                    fontColor: Colors.red,
+                    size: 15,
                   )
                 ],
               ),
-              RaisedButton(onPressed: (){
-                return Navigator.of(context).pushNamed('/qcomp');
-              },
-              child: Text('Applications And Complexity of Queue'),
+              RaisedButton(
+                onPressed: () {
+                  return Navigator.of(context).pushNamed('/qcomp');
+                },
+                child:
+                    MyTextStyle(text: 'Applications And Complexity of Queue'),
               )
             ],
           ),

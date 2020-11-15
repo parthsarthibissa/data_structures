@@ -1,23 +1,40 @@
+import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 
 class MyAppDrawer extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
         child: Column(
       children: [
-        UserAccountsDrawerHeader(accountName: null, accountEmail: null),
+        UserAccountsDrawerHeader(
+            accountName: MyTextStyle(text: 'Data Structures And Algorithms'),
+            accountEmail: MyTextStyle(text: 'Version 1.0')),
         ListTile(
-          title: Text('Stack'),
+          title: MyTextStyle(
+            text: 'Stack',
+            size: 20,
+          ),
           onTap: () {
             return Navigator.of(context).pushNamed('/stack');
           },
         ),
         ListTile(
-          title: Text('Queue'),
+          title: MyTextStyle(
+            text: 'Queue',
+            size: 20,
+          ),
           onTap: () {
             return Navigator.of(context).pushNamed('/queue');
+          },
+        ),
+        ListTile(
+          title: MyTextStyle(
+            text: 'Linked List',
+            size: 20,
+          ),
+          onTap: () {
+            return Navigator.of(context).pushNamed('/linked');
           },
         )
       ],

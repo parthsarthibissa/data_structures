@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -14,6 +15,8 @@ class _WorkingScreenState extends State<WorkingScreen> {
   bool popenable = false;
   bool pushenable = true;
   final s = Queue<dynamic>();
+  String fullmessage = '';
+  String emptymessage = '';
   int top;
 
   void initState() {
@@ -21,6 +24,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
     top = -1;
     popenable = false;
     pushenable = true;
+    fullmessage = '';
   }
 
   int push(int a) {
@@ -31,6 +35,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       c = c + 1;
       if (s.length == 5) {
         pushenable = false;
+        fullmessage = 'Stack Overflow !!';
       }
       if (top != 1) {
         popenable = true;
@@ -45,6 +50,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
     setState(() {
       top = s.last;
       pushenable = true;
+      fullmessage = '';
       if (top == -1 || top == 1) {
         popenable = false;
         c = 2;
@@ -61,6 +67,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       c = 1;
       popenable = false;
       pushenable = true;
+      fullmessage = '';
     });
     return top;
   }
@@ -69,24 +76,24 @@ class _WorkingScreenState extends State<WorkingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Stack'),
+          title: MyTextStyle(text: 'Stack'),
           centerTitle: true,
         ),
         body: SizedBox(
           child: Column(
             children: [
               Container(
-                  width: 200,
-                  height: 200,
+                  width: 150,
+                  height: 150,
                   alignment: Alignment.center,
-                  child: Text(
-                    'TOP -> ' + top.toString(),
-                    style: TextStyle(fontSize: 25),
+                  child: MyTextStyle(
+                    text: 'TOP -> ' + top.toString(),
+                    size: 20,
                   ),
                   margin: EdgeInsets.all(100),
                   decoration: BoxDecoration(
                       color: Colors.white30,
-                      shape: BoxShape.rectangle,
+                      shape: BoxShape.circle,
                       border: Border.all(
                           color: Colors.blue,
                           width: 6,
@@ -96,17 +103,17 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 children: [
                   RaisedButton(
                     onPressed: pushenable ? () => push(c) : null,
-                    child: Text('PUSH'),
+                    child: MyTextStyle(text: 'PUSH'),
                   ),
                   RaisedButton(
                     onPressed: popenable ? () => pop() : null,
-                    child: Text('POP'),
+                    child: MyTextStyle(text: 'POP'),
                   ),
                   RaisedButton(
                     onPressed: () {
                       clearStack();
                     },
-                    child: Text('Clear Stack'),
+                    child: MyTextStyle(text: 'Clear Stack'),
                   )
                 ],
               ),
@@ -116,17 +123,31 @@ class _WorkingScreenState extends State<WorkingScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('MAX SIZE OF STACK -> 5\n',style: TextStyle(fontSize: 20),),
-                  Text('CURRENT SIZE -> ' + s.length.toString() + '\n',style: TextStyle(fontSize: 20),),
-                  Text(
-                    'STACK -> ' + s.toString(),
-                    style: TextStyle(fontSize: 20),
+                  MyTextStyle(
+                    text: 'MAX SIZE OF STACK -> 5\n',
+                    size: 20,
+                  ),
+                  MyTextStyle(
+                    text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
+                    size: 20,
+                  ),
+                  MyTextStyle(
+                    text: 'STACK -> ' + s.toString(),
+                    size: 20,
+                  ),
+                  MyTextStyle(
+                    text: fullmessage,
+                    fontColor: Colors.red,
+                    size: 15,
                   )
                 ],
               ),
-              RaisedButton(onPressed: (){
-                return Navigator.of(context).pushNamed('/scomp');
-              },child: Text('Applications And Complexity'),)
+              RaisedButton(
+                onPressed: () {
+                  return Navigator.of(context).pushNamed('/scomp');
+                },
+                child: MyTextStyle(text: 'Applications And Complexity'),
+              )
             ],
           ),
         ));
