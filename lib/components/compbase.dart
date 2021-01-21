@@ -1,4 +1,7 @@
+import 'package:data_structures/components/drawer.dart';
+import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 
 class BaseComp extends StatelessWidget {
@@ -10,25 +13,31 @@ class BaseComp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          centerTitle: true,
-        ),
-        body: Container(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          alignment: Alignment.center,
-          color: Colors.amber,
-          child: ListView(children: [
-            MyTextStyle(
-              text: title + '\n',
-              size: 40,
-            ),
-            MyTextStyle(text: application, size: 20),
-            MyTextStyle(text: complex, size: 20),
-          ]),
-        ));
+    final Size size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+          drawer: MyAppDrawer(),
+          body: Column(
+            children: [
+              Header(size: size, title: 'Applications of ' + title),
+              Center(
+                child: MyTextStyle(
+                  text: title + '\n',
+                  size: 30,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(appPadding),
+                  child: ListView(children: [
+                    MyTextStyle(text: application, size: 20),
+                    MyTextStyle(text: complex, size: 20),
+                  ]),
+                ),
+              ),
+              Divider(),
+            ],
+          )),
+    );
   }
 }

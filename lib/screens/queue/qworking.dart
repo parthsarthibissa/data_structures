@@ -1,4 +1,6 @@
 import 'dart:collection';
+import 'package:data_structures/components/drawer.dart';
+import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -88,107 +90,96 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: MyTextStyle(text: 'Queue'),
-          centerTitle: true,
-        ),
-        body: SizedBox(
-          child: Column(
-            children: [
-              FittedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                        width: 500,
-                        height: 500,
-                        alignment: Alignment.center,
-                        child: MyTextStyle(
-                          text: 'FRONT -> ' + front.toString(),
-                          size: 50,
-                        ),
-                        margin: EdgeInsets.all(100),
-                        decoration: BoxDecoration(
-                            color: Colors.white30,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                color: Colors.blue,
-                                width: 6,
-                                style: BorderStyle.solid))),
-                    Container(
-                        width: 500,
-                        height: 500,
-                        alignment: Alignment.center,
-                        child: MyTextStyle(
-                          text: 'REAR -> ' + rear.toString(),
-                          size: 50,
-                        ),
-                        margin: EdgeInsets.all(100),
-                        decoration: BoxDecoration(
-                            color: Colors.white30,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                color: Colors.blue,
-                                width: 6,
-                                style: BorderStyle.solid))),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+    final Size size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        drawer: MyAppDrawer(),
+        body: Column(
+          children: [
+            Header(size: size, title: 'Queue Working'),
+            SizedBox(height: 10),
+            FittedBox(
+              child: Row(
                 children: [
-                  RaisedButton(
+                  Container(
+                      width: 500,
+                      height: 500,
+                      alignment: Alignment.center,
+                      child: MyTextStyle(
+                        text: 'FRONT -> ' + front.toString(),
+                        size: 50,
+                      ),
+                      margin: EdgeInsets.all(100),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Colors.lightGreenAccent[100],
+                          Colors.lightBlueAccent[100]
+                        ]),
+                        shape: BoxShape.circle,
+                      )),
+                  Container(
+                      width: 500,
+                      height: 500,
+                      alignment: Alignment.center,
+                      child: MyTextStyle(
+                        text: 'REAR -> ' + rear.toString(),
+                        size: 50,
+                      ),
+                      margin: EdgeInsets.all(100),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Colors.lightGreenAccent[100],
+                          Colors.lightBlueAccent[100]
+                        ]),
+                        shape: BoxShape.circle,
+                      )),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                RaisedButton(
                     onPressed: enqenable ? () => enq(c) : null,
                     child: MyTextStyle(text: 'ENQUEUE'),
-                  ),
-                  RaisedButton(
+                    color: Colors.lightBlueAccent[100]),
+                RaisedButton(
                     onPressed: deqenable ? () => deq() : null,
                     child: MyTextStyle(text: 'DEQUEUE'),
-                  ),
-                  RaisedButton(
+                    color: Colors.lightBlueAccent[100]),
+                RaisedButton(
                     onPressed: () {
                       clearQueue();
                     },
-                    child: MyTextStyle(text: 'Clear Queue'),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  MyTextStyle(
-                    text: 'MAX SIZE OF QUEUE -> 5\n',
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: 'QUEUE -> ' + q.toString(),
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: '\n' + fullmessage + emptymessage + '\n',
-                    fontColor: Colors.red,
-                    size: 15,
-                  )
-                ],
-              ),
-              RaisedButton(
-                onPressed: () {
-                  return Navigator.of(context).pushNamed('/qcomp');
-                },
-                child:
-                    MyTextStyle(text: 'Applications And Complexity of Queue'),
-              )
-            ],
-          ),
-        ));
+                    child: MyTextStyle(text: 'CLEAR QUEUE'),
+                    color: Colors.lightBlueAccent[100])
+              ],
+            ),
+            SizedBox(height: 10),
+            MyTextStyle(
+              text: 'MAX SIZE OF QUEUE -> 5\n',
+              size: 20,
+            ),
+            MyTextStyle(
+              text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
+              size: 20,
+            ),
+            MyTextStyle(
+              text: 'QUEUE -> ' + q.toString(),
+              size: 20,
+            ),
+            SizedBox(height: 10),
+            RaisedButton(
+              onPressed: () {
+                return Navigator.of(context).pushNamed('/qcomp');
+              },
+              color: Colors.lightBlueAccent[100],
+              child: MyTextStyle(text: 'Applications And Complexity of Queue'),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

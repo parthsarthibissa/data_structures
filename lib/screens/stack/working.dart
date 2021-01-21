@@ -1,6 +1,9 @@
 import 'dart:collection';
 
+import 'package:data_structures/components/drawer.dart';
+import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -74,82 +77,98 @@ class _WorkingScreenState extends State<WorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: MyTextStyle(text: 'Stack'),
-          centerTitle: true,
-        ),
-        body: SizedBox(
-          child: Column(
-            children: [
-              Container(
-                  width: 150,
-                  height: 150,
-                  alignment: Alignment.center,
-                  child: MyTextStyle(
-                    text: 'TOP -> ' + top.toString(),
-                    size: 20,
-                  ),
-                  margin: EdgeInsets.all(100),
-                  decoration: BoxDecoration(
-                      color: Colors.white30,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          color: Colors.blue,
-                          width: 6,
-                          style: BorderStyle.solid))),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+    final Size size = MediaQuery.of(context).size;
+    return SafeArea(
+        child: Scaffold(
+      drawer: MyAppDrawer(),
+      body: Column(
+        children: [
+          Header(size: size, title: 'Stack Working'),
+          Expanded(
+            child: SizedBox(
+              child: ListView(
+                padding: EdgeInsets.all(appPadding),
                 children: [
-                  RaisedButton(
-                    onPressed: pushenable ? () => push(c) : null,
-                    child: MyTextStyle(text: 'PUSH'),
+                  Container(
+                      width: 150,
+                      height: 150,
+                      alignment: Alignment.center,
+                      child: MyTextStyle(
+                        text: 'TOP -> ' + top.toString(),
+                        size: 20,
+                        fontColor: Colors.black87,
+                      ),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            Colors.lightGreenAccent[100],
+                            Colors.lightBlueAccent[100]
+                          ]),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                              color: Colors.lightBlueAccent[100],
+                              width: 6,
+                              style: BorderStyle.solid))),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      RaisedButton(
+                        onPressed: pushenable ? () => push(c) : null,
+                        child: MyTextStyle(text: 'PUSH'),
+                        color: Colors.lightBlueAccent[100],
+                      ),
+                      RaisedButton(
+                        onPressed: popenable ? () => pop() : null,
+                        child: MyTextStyle(text: 'POP'),
+                        color: Colors.lightBlueAccent[100],
+                      ),
+                      RaisedButton(
+                        onPressed: () {
+                          clearStack();
+                        },
+                        child: MyTextStyle(text: 'Clear Stack'),
+                        color: Colors.lightBlueAccent[100],
+                      )
+                    ],
                   ),
-                  RaisedButton(
-                    onPressed: popenable ? () => pop() : null,
-                    child: MyTextStyle(text: 'POP'),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      MyTextStyle(
+                        text: 'MAX SIZE OF STACK -> 5\n',
+                        size: 20,
+                      ),
+                      MyTextStyle(
+                        text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
+                        size: 20,
+                      ),
+                      MyTextStyle(
+                        text: 'STACK -> ' + s.toString(),
+                        size: 20,
+                      ),
+                      MyTextStyle(
+                        text: fullmessage,
+                        fontColor: Colors.red,
+                        size: 15,
+                      )
+                    ],
                   ),
                   RaisedButton(
                     onPressed: () {
-                      clearStack();
+                      return Navigator.of(context).pushNamed('/scomp');
                     },
-                    child: MyTextStyle(text: 'Clear Stack'),
+                    color: Colors.lightBlueAccent[100],
+                    child: MyTextStyle(text: 'Applications And Complexity'),
                   )
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  MyTextStyle(
-                    text: 'MAX SIZE OF STACK -> 5\n',
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: 'STACK -> ' + s.toString(),
-                    size: 20,
-                  ),
-                  MyTextStyle(
-                    text: fullmessage,
-                    fontColor: Colors.red,
-                    size: 15,
-                  )
-                ],
-              ),
-              RaisedButton(
-                onPressed: () {
-                  return Navigator.of(context).pushNamed('/scomp');
-                },
-                child: MyTextStyle(text: 'Applications And Complexity'),
-              )
-            ],
-          ),
-        ));
+            ),
+          )
+        ],
+      ),
+    ));
   }
 }
