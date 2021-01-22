@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -86,6 +87,8 @@ class _WorkingScreenState extends State<WorkingScreen> {
           Header(size: size, title: 'Stack Working'),
           Expanded(
             child: SizedBox(
+              height: SizeConfig.screenHeight - 50,
+              width: SizeConfig.screenWidth - 50,
               child: ListView(
                 padding: EdgeInsets.all(appPadding),
                 children: [
@@ -109,30 +112,39 @@ class _WorkingScreenState extends State<WorkingScreen> {
                               width: 6,
                               style: BorderStyle.solid))),
                   SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      RaisedButton(
-                        onPressed: pushenable ? () => push(c) : null,
-                        child: MyTextStyle(text: 'PUSH'),
-                        color: Colors.lightBlueAccent[100],
-                      ),
-                      RaisedButton(
-                        onPressed: popenable ? () => pop() : null,
-                        child: MyTextStyle(text: 'POP'),
-                        color: Colors.lightBlueAccent[100],
-                      ),
-                      RaisedButton(
-                        onPressed: () {
-                          clearStack();
-                        },
-                        child: MyTextStyle(text: 'Clear Stack'),
-                        color: Colors.lightBlueAccent[100],
-                      )
-                    ],
+                  Container(
+                    width: SizeConfig.screenWidth,
+                    padding: EdgeInsets.all(appPadding),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        RaisedButton(
+                          onPressed: pushenable ? () => push(c) : null,
+                          child: MyTextStyle(text: 'PUSH'),
+                          color: Colors.lightGreenAccent[100],
+                        ),
+                        RaisedButton(
+                          onPressed: popenable ? () => pop() : null,
+                          child: MyTextStyle(text: 'POP'),
+                          color: Colors.lightGreenAccent[100],
+                        ),
+                        RaisedButton(
+                          onPressed: () {
+                            clearStack();
+                          },
+                          child: MyTextStyle(text: 'Clear Stack'),
+                          color: Colors.lightGreenAccent[100],
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,7 +172,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
                     onPressed: () {
                       return Navigator.of(context).pushNamed('/scomp');
                     },
-                    color: Colors.lightBlueAccent[100],
+                    color: Colors.lightGreenAccent[100],
                     child: MyTextStyle(text: 'Applications And Complexity'),
                   )
                 ],

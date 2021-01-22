@@ -145,58 +145,63 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
               child: ListView(
                 padding: EdgeInsets.all(appPadding),
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          width: SizeConfig.screenWidth / 3,
-                          height: SizeConfig.screenHeight / 10,
-                          alignment: Alignment.center,
-                          child: MyTextStyle(
-                            text: datapart == null ? 'Null' : datapart,
-                            size: 15,
-                            fontColor: Colors.black87,
-                          ),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Colors.lightGreenAccent[100],
-                                Colors.lightBlueAccent[100]
-                              ]),
-                              shape: BoxShape.rectangle,
-                              border: Border.all(
-                                  color: Colors.lightBlueAccent[100],
-                                  width: 6,
-                                  style: BorderStyle.solid))),
-                      MyTextStyle(
-                        text: '=>',
-                        size: SizeConfig.screenWidth / 20,
-                      ),
-                      Container(
-                          width: SizeConfig.screenWidth / 3,
-                          height: SizeConfig.screenHeight / 10,
-                          alignment: Alignment.center,
-                          child: MyTextStyle(
-                            text: addresspart,
-                            size: 15,
-                            fontColor: Colors.black87,
-                          ),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Colors.lightGreenAccent[100],
-                                Colors.lightBlueAccent[100]
-                              ]),
-                              shape: BoxShape.rectangle,
-                              border: Border.all(
-                                  color: Colors.lightBlueAccent[100],
-                                  width: 6,
-                                  style: BorderStyle.solid))),
-                    ],
+                  Container(
+                    width: SizeConfig.screenHeight,
+                    padding: EdgeInsets.all(appPadding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            width: SizeConfig.screenWidth / 3,
+                            height: SizeConfig.screenHeight / 10,
+                            alignment: Alignment.center,
+                            child: MyTextStyle(
+                              text: datapart == null ? 'Null' : datapart,
+                              size: 15,
+                              fontColor: Colors.black87,
+                            ),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Colors.lightGreenAccent[100],
+                                  Colors.lightBlueAccent[100]
+                                ]),
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                    color: Colors.lightBlueAccent[100],
+                                    width: 6,
+                                    style: BorderStyle.solid))),
+                        MyTextStyle(
+                          text: '=>',
+                          size: SizeConfig.screenWidth / 20,
+                        ),
+                        Container(
+                            width: SizeConfig.screenWidth / 3,
+                            height: SizeConfig.screenHeight / 10,
+                            alignment: Alignment.center,
+                            child: MyTextStyle(
+                              text: addresspart,
+                              size: 15,
+                              fontColor: Colors.black87,
+                            ),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Colors.lightGreenAccent[100],
+                                  Colors.lightBlueAccent[100]
+                                ]),
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                    color: Colors.lightBlueAccent[100],
+                                    width: 6,
+                                    style: BorderStyle.solid))),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Container(
-                    padding: EdgeInsets.all(appPadding - 5),
+                    width: SizeConfig.screenWidth,
+                    padding: EdgeInsets.all(appPadding),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                           colors: [Colors.blue, Colors.lightBlueAccent[100]]),
@@ -276,7 +281,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                     onPressed: () {
                       return Navigator.of(context).pushNamed('/LLcomp');
                     },
-                    color: Colors.lightBlueAccent[100],
+                    color: Colors.lightGreenAccent[100],
                     child: MyTextStyle(text: 'Applications And Complexity'),
                   )
                 ],

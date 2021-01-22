@@ -92,6 +92,21 @@ class MyAppDrawer extends StatelessWidget {
                 },
               )),
           SizedBox(height: 5),
+          Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Colors.lightBlueAccent[200],
+                Colors.lightGreenAccent[200]
+              ])),
+              child: ListTile(
+                title: MyTextStyle(
+                  text: 'App Settings',
+                  size: 20,
+                ),
+                onTap: () {
+                  return Navigator.popAndPushNamed(context, '/settings');
+                },
+              )),
         ],
       ),
     );

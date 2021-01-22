@@ -1,4 +1,3 @@
-import 'package:data_structures/components/cards.dart';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
@@ -8,6 +7,7 @@ import 'package:data_structures/screens/linkedlist/linkedlistworking.dart';
 import 'package:data_structures/screens/queue/queue.dart';
 import 'package:data_structures/screens/queue/queuecomp.dart';
 import 'package:data_structures/screens/queue/qworking.dart';
+import 'package:data_structures/screens/settings/appsettings.dart';
 import 'package:data_structures/screens/splashscreen.dart';
 import 'package:data_structures/screens/stack/stack.dart';
 import 'package:data_structures/screens/stack/stackcomp.dart';
@@ -35,7 +35,8 @@ void main() => runApp(MaterialApp(
         '/splash': (_) => SplashScreen(),
         '/LLdata': (_) => LinkedListData(),
         '/LLworking': (_) => LinkedListWorking(),
-        '/LLcomp': (_) => LinkedListComp()
+        '/LLcomp': (_) => LinkedListComp(),
+        '/settings': (_) => AppSettings()
       },
       initialRoute: '/splash',
     ));
@@ -59,52 +60,9 @@ class _HomePageState extends State<HomePage> {
                   size: size,
                   title: 'Data Structures And Algorithms',
                 ),
-                Divider(),
                 MyTextStyle(
-                  text: 'Quotes Section',
-                  size: 25,
-                ),
-                Divider(
-                  color: Colors.lightBlue[200].withOpacity(1),
-                  thickness: 2.5,
-                ),
-                Cardshow(
-                  quote1: 'Good Programmers Worry about Data Structures',
-                  quote2: 'Bad Programmers worry about Code',
-                ),
-                Divider(
-                  color: Colors.lightBlue[200].withOpacity(1),
-                  thickness: .5,
-                ),
-                Cardshow(
-                  quote1:
-                      'Smart data structures and dumb code works a lot better than the other way around.',
-                  quote2:
-                      'Algorithm becomes self evident when used with correct data structure',
-                ),
-                Divider(
-                  color: Colors.lightBlue[200].withOpacity(1),
-                  thickness: .5,
-                ),
-                Cardshow(
-                  quote1:
-                      'It is better to have 100 functions operate on one data structure than to have 10 functions operate on 10 data structures.',
-                  quote2:
-                      'Generally, the craft of programming is the factoring of a set of requirements into a a set of functions and data structures',
-                ),
-                Divider(
-                  color: Colors.lightBlue[200].withOpacity(1),
-                  thickness: .5,
-                ),
-                Cardshow(
-                  quote1:
-                      'A data structure is just a stupid programming language.',
-                  quote2:
-                      'Strings are the favorite data structure of bad programmers.',
-                ),
-                Divider(
-                  color: Colors.lightBlue[200].withOpacity(1),
-                  thickness: .5,
+                  text: 'Welcome!',
+                  size: 20,
                 ),
               ],
             ))));

@@ -5,13 +5,18 @@ class MyTextStyle extends StatelessWidget {
   final String text;
   final double size;
   final Color fontColor;
-  const MyTextStyle({@required this.text, this.size, this.fontColor});
+  final bool bold;
+  const MyTextStyle(
+      {@required this.text, this.size, this.fontColor, this.bold = false});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.openSans(fontSize: size, color: fontColor),
+      style: GoogleFonts.openSans(
+          fontSize: size,
+          color: fontColor,
+          fontWeight: bold ? FontWeight.bold : FontWeight.normal),
     );
   }
 }

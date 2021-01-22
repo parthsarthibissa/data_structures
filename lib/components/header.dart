@@ -14,7 +14,8 @@ class Header extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: size.height * 0.15,
+            height: size.height * 0.12,
+            width: size.width,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
                 Colors.lightBlueAccent[200],

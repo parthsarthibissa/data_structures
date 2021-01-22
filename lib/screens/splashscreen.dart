@@ -6,12 +6,13 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashScreenView(
-      imageSrc: 'assets/images.jpg',
+      imageSrc: 'assets/images.png',
       home: HomePage(),
-      duration: 6000,
-      backgroundColor: Colors.white,
+      duration: 5000,
+      backgroundColor: Colors.black,
       text: 'Data Structures And Algorithms',
       textType: TextType.TyperAnimatedText,
+      textStyle: TextStyle(color: Colors.lightGreenAccent),
     );
   }
 }

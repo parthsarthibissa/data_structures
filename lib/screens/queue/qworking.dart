@@ -2,6 +2,8 @@ import 'dart:collection';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/config/SizeConfig.dart';
+import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -136,25 +138,34 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                RaisedButton(
-                    onPressed: enqenable ? () => enq(c) : null,
-                    child: MyTextStyle(text: 'ENQUEUE'),
-                    color: Colors.lightBlueAccent[100]),
-                RaisedButton(
-                    onPressed: deqenable ? () => deq() : null,
-                    child: MyTextStyle(text: 'DEQUEUE'),
-                    color: Colors.lightBlueAccent[100]),
-                RaisedButton(
-                    onPressed: () {
-                      clearQueue();
-                    },
-                    child: MyTextStyle(text: 'CLEAR QUEUE'),
-                    color: Colors.lightBlueAccent[100])
-              ],
+            SizedBox(height: 5),
+            Container(
+              width: SizeConfig.screenWidth,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                shape: BoxShape.rectangle,
+              ),
+              padding: EdgeInsets.all(appPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  RaisedButton(
+                      onPressed: enqenable ? () => enq(c) : null,
+                      child: MyTextStyle(text: 'ENQUEUE'),
+                      color: Colors.lightGreenAccent[100]),
+                  RaisedButton(
+                      onPressed: deqenable ? () => deq() : null,
+                      child: MyTextStyle(text: 'DEQUEUE'),
+                      color: Colors.lightGreenAccent[100]),
+                  RaisedButton(
+                      onPressed: () {
+                        clearQueue();
+                      },
+                      child: MyTextStyle(text: 'CLEAR QUEUE'),
+                      color: Colors.lightGreenAccent[100])
+                ],
+              ),
             ),
             SizedBox(height: 10),
             MyTextStyle(
@@ -174,7 +185,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               onPressed: () {
                 return Navigator.of(context).pushNamed('/qcomp');
               },
-              color: Colors.lightBlueAccent[100],
+              color: Colors.lightGreenAccent[100],
               child: MyTextStyle(text: 'Applications And Complexity of Queue'),
             )
           ],
