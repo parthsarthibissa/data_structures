@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTextStyle extends StatelessWidget {
   final String text;
   final double size;
-  final Color fontColor;
-  final bool bold;
-  const MyTextStyle(
-      {@required this.text, this.size, this.fontColor, this.bold = false});
+  final String bold;
+  const MyTextStyle({@required this.text, this.size, this.bold});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,9 @@ class MyTextStyle extends StatelessWidget {
       text,
       style: GoogleFonts.openSans(
           fontSize: size,
-          color: fontColor,
-          fontWeight: bold ? FontWeight.bold : FontWeight.normal),
+          color: Colors.black,
+          letterSpacing: 1.2,
+          fontWeight: bold == 'yes' ? FontWeight.bold : FontWeight.normal),
     );
   }
 }

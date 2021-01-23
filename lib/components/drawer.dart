@@ -22,11 +22,10 @@ class MyAppDrawer extends StatelessWidget {
               ])),
               accountName: MyTextStyle(
                 text: 'Data Structures And Algorithms',
-                fontColor: Colors.black87,
+                bold: 'yes',
               ),
               accountEmail: MyTextStyle(
                 text: 'Version 1.1',
-                fontColor: Colors.black87,
               )),
           Container(
               decoration: BoxDecoration(

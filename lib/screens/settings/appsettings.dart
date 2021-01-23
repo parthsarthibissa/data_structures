@@ -1,8 +1,10 @@
+import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:get/get.dart';
 
 class AppSettings extends StatefulWidget {
   @override
@@ -24,9 +26,9 @@ class _AppSettingsState extends State<AppSettings> {
                   title: 'Data Structures And Algorithms',
                 ),
                 MyTextStyle(
-                  text: 'Settings',
+                  text: 'Settings Still Under Development',
                   size: 20,
-                  bold: true,
+                  bold: 'yes',
                 ),
                 Divider(
                   color: Colors.lightBlueAccent[100],
@@ -38,17 +40,32 @@ class _AppSettingsState extends State<AppSettings> {
                     alignment: Alignment.centerLeft,
                     child: MyTextStyle(
                       text: 'Theme Mode',
-                      bold: true,
+                      bold: 'yes',
                     )),
-                Switch(value: false, onChanged: null),
-                Switch(value: false, onChanged: null),
+                Container(
+                  width: size.width / 3,
+                  child: Column(
+                    children: [
+                      MyButton(
+                        text: 'Change Mode',
+                        onPressed: () {
+                          if (Get.isDarkMode) {
+                            Get.changeThemeMode(ThemeMode.light);
+                          } else {
+                            Get.changeThemeMode(ThemeMode.dark);
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                     width: size.width,
                     padding: EdgeInsets.all(appPadding),
                     alignment: Alignment.centerLeft,
                     child: MyTextStyle(
                       text: 'Fonts',
-                      bold: true,
+                      bold: 'yes',
                     )),
                 RaisedButton(onPressed: null),
                 RaisedButton(onPressed: null),

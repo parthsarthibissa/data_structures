@@ -1,4 +1,5 @@
 import 'package:data_structures/components/basepage.dart';
+import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +8,9 @@ class LinkedListData extends StatelessWidget {
   Widget build(BuildContext context) {
     return BasePage(
       title: 'LinkedList',
-      button: RaisedButton(
-          color: Colors.lightGreenAccent[100],
+      button: MyButton(
           onPressed: () => {Navigator.of(context).pushNamed('/LLworking')},
-          child: MyTextStyle(text: 'Working of LinkedList')),
+          text: 'Working of LinkedList'),
       dsaData:
           '''Linked List is a sequence of links which contains items. Each link contains a connection to another link. Linked list is the second most-used data structure after array. Following are the important terms to understand the concept of Linked List.
 

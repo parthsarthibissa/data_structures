@@ -1,3 +1,4 @@
+import 'package:data_structures/components/mybutton.dart';
 import 'package:flutter/material.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/components/drawer.dart';
@@ -158,7 +159,6 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             child: MyTextStyle(
                               text: datapart == null ? 'Null' : datapart,
                               size: 15,
-                              fontColor: Colors.black87,
                             ),
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [
@@ -181,7 +181,6 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             child: MyTextStyle(
                               text: addresspart,
                               size: 15,
-                              fontColor: Colors.black87,
                             ),
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [
@@ -213,43 +212,38 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            RaisedButton(
+                            MyButton(
                               onPressed: () => {insbeg(a)},
-                              color: Colors.lightGreenAccent[100],
-                              child: MyTextStyle(text: 'Insert Beginning'),
+                              text: 'Insert At Beginning',
                             ),
-                            RaisedButton(
+                            MyButton(
+                              text: 'Insert At End',
                               onPressed: () => {insend(a)},
-                              color: Colors.lightGreenAccent[100],
-                              child: MyTextStyle(text: 'Insert End'),
-                            ),
+                            )
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            RaisedButton(
-                              color: Colors.lightGreenAccent[100],
+                            MyButton(
                               onPressed: delbegenable == true
                                   ? () => {delebeg()}
                                   : null,
-                              child: MyTextStyle(text: 'Delete Beginning'),
+                              text: 'Delete At Beginning',
                             ),
-                            RaisedButton(
-                              color: Colors.lightGreenAccent[100],
+                            MyButton(
                               onPressed: delbegenable == true
                                   ? () => {delend()}
                                   : null,
-                              child: MyTextStyle(text: 'Delete End'),
+                              text: 'Delete At End',
                             ),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            RaisedButton(
-                              color: Colors.lightGreenAccent[100],
-                              child: MyTextStyle(text: 'Clear Linked List'),
+                            MyButton(
+                              text: 'Clear Linked List',
                               onPressed: () => {clearLinkedList()},
                             )
                           ],
@@ -272,17 +266,15 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                       ),
                       MyTextStyle(
                         text: '$fullmessage\n',
-                        fontColor: Colors.red,
                         size: 15,
                       )
                     ],
                   ),
-                  RaisedButton(
+                  MyButton(
                     onPressed: () {
                       return Navigator.of(context).pushNamed('/LLcomp');
                     },
-                    color: Colors.lightGreenAccent[100],
-                    child: MyTextStyle(text: 'Applications And Complexity'),
+                    text: 'Applications And Complexity',
                   )
                 ],
               ),

@@ -40,7 +40,7 @@ class Header extends StatelessWidget {
                     fit: BoxFit.fitWidth,
                     child: MyTextStyle(
                       text: title,
-                      fontColor: Colors.black87,
+                      bold: 'yes',
                     )),
               ],
             ),

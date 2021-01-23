@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
+import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
@@ -99,7 +100,6 @@ class _WorkingScreenState extends State<WorkingScreen> {
                       child: MyTextStyle(
                         text: 'TOP -> ' + top.toString(),
                         size: 20,
-                        fontColor: Colors.black87,
                       ),
                       decoration: BoxDecoration(
                           gradient: LinearGradient(colors: [
@@ -114,7 +114,6 @@ class _WorkingScreenState extends State<WorkingScreen> {
                   SizedBox(height: 10),
                   Container(
                     width: SizeConfig.screenWidth,
-                    padding: EdgeInsets.all(appPadding),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                           colors: [Colors.blue, Colors.lightBlueAccent[100]]),
@@ -123,22 +122,19 @@ class _WorkingScreenState extends State<WorkingScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        RaisedButton(
+                        MyButton(
                           onPressed: pushenable ? () => push(c) : null,
-                          child: MyTextStyle(text: 'PUSH'),
-                          color: Colors.lightGreenAccent[100],
+                          text: 'PUSH',
                         ),
-                        RaisedButton(
+                        MyButton(
                           onPressed: popenable ? () => pop() : null,
-                          child: MyTextStyle(text: 'POP'),
-                          color: Colors.lightGreenAccent[100],
+                          text: 'POP',
                         ),
-                        RaisedButton(
+                        MyButton(
                           onPressed: () {
                             clearStack();
                           },
-                          child: MyTextStyle(text: 'Clear Stack'),
-                          color: Colors.lightGreenAccent[100],
+                          text: 'Clear Stack',
                         )
                       ],
                     ),
@@ -163,17 +159,15 @@ class _WorkingScreenState extends State<WorkingScreen> {
                       ),
                       MyTextStyle(
                         text: fullmessage,
-                        fontColor: Colors.red,
                         size: 15,
                       )
                     ],
                   ),
-                  RaisedButton(
+                  MyButton(
                     onPressed: () {
                       return Navigator.of(context).pushNamed('/scomp');
                     },
-                    color: Colors.lightGreenAccent[100],
-                    child: MyTextStyle(text: 'Applications And Complexity'),
+                    text: 'Applications And Complexity',
                   )
                 ],
               ),
