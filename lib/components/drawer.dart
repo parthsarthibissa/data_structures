@@ -36,7 +36,6 @@ class MyAppDrawer extends StatelessWidget {
               child: ListTile(
                 title: MyTextStyle(
                   text: 'HomeScreen',
-                  size: 20,
                 ),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/home');
@@ -52,7 +51,6 @@ class MyAppDrawer extends StatelessWidget {
               child: ListTile(
                 title: MyTextStyle(
                   text: 'Stack',
-                  size: 20,
                 ),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/stack');
@@ -68,7 +66,6 @@ class MyAppDrawer extends StatelessWidget {
               child: ListTile(
                 title: MyTextStyle(
                   text: 'Queue',
-                  size: 20,
                 ),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/queue');
@@ -84,7 +81,6 @@ class MyAppDrawer extends StatelessWidget {
               child: ListTile(
                 title: MyTextStyle(
                   text: 'LinkedList',
-                  size: 20,
                 ),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/LLdata');
@@ -100,7 +96,6 @@ class MyAppDrawer extends StatelessWidget {
               child: ListTile(
                 title: MyTextStyle(
                   text: 'App Settings',
-                  size: 20,
                 ),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/settings');

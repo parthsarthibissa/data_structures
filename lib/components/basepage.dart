@@ -31,7 +31,9 @@ class BasePage extends StatelessWidget {
               child: ListView(
             padding: EdgeInsets.all(appPadding),
             children: [
-              MyTextStyle(text: dsaData, size: 18.5),
+              MyTextStyle(
+                text: dsaData,
+              ),
             ],
           )),
           button,

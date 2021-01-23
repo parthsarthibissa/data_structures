@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/mybutton.dart';
@@ -7,6 +6,8 @@ import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+
 import 'package:flutter/rendering.dart';
 
 class WorkingScreen extends StatefulWidget {
@@ -17,11 +18,11 @@ class WorkingScreen extends StatefulWidget {
 class _WorkingScreenState extends State<WorkingScreen> {
   int c = 1;
   TextEditingController controller;
+  String emptymessage = '';
+  String fullmessage = '';
   bool popenable = false;
   bool pushenable = true;
   final s = Queue<dynamic>();
-  String fullmessage = '';
-  String emptymessage = '';
   int top;
 
   void initState() {
@@ -80,6 +81,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    ScreenScaler scaler = ScreenScaler()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
@@ -90,12 +92,11 @@ class _WorkingScreenState extends State<WorkingScreen> {
               child: Row(
                 children: [
                   Container(
-                      width: 180,
-                      height: 180,
+                      width: scaler.getWidth(30),
+                      height: scaler.getHeight(30),
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'TOP -> ' + top.toString(),
-                        size: 18,
                         color: Colors.black,
                       ),
                       decoration: BoxDecoration(
@@ -108,15 +109,14 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 5),
             Container(
-              width: SizeConfig.screenWidth,
+              width: scaler.getWidth(100),
+              height: scaler.getHeight(5),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.blue, Colors.lightBlueAccent[100]]),
                 shape: BoxShape.rectangle,
               ),
-              padding: EdgeInsets.all(appPadding),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -137,18 +137,15 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: scaler.getHeight(1.2)),
             MyTextStyle(
               text: 'MAX SIZE OF STACK -> 5\n',
-              size: 20,
             ),
             MyTextStyle(
               text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
-              size: 20,
             ),
             MyTextStyle(
               text: 'STACK -> ' + s.toString(),
-              size: 20,
             ),
             SizedBox(height: 10),
             MyButton(

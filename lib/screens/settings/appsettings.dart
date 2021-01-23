@@ -27,7 +27,6 @@ class _AppSettingsState extends State<AppSettings> {
                 ),
                 MyTextStyle(
                   text: 'Settings Still Under Development',
-                  size: 20,
                   bold: 'yes',
                 ),
                 Divider(

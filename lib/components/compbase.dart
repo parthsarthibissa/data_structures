@@ -23,15 +23,14 @@ class BaseComp extends StatelessWidget {
               Center(
                 child: MyTextStyle(
                   text: title + '\n',
-                  size: 30,
                 ),
               ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(appPadding),
                   child: ListView(children: [
-                    MyTextStyle(text: application, size: 20),
-                    MyTextStyle(text: complex, size: 20),
+                    MyTextStyle(text: application),
+                    MyTextStyle(text: complex),
                   ]),
                 ),
               ),

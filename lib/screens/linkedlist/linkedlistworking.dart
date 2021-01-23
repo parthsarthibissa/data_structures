@@ -159,7 +159,6 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             child: MyTextStyle(
                               text: datapart == null ? 'Null' : datapart,
                               color: Colors.black,
-                              size: 15,
                             ),
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [
@@ -173,7 +172,6 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                                     style: BorderStyle.solid))),
                         MyTextStyle(
                           text: '=>',
-                          size: SizeConfig.screenWidth / 20,
                         ),
                         Container(
                             width: SizeConfig.screenWidth / 3,
@@ -181,7 +179,6 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             alignment: Alignment.center,
                             child: MyTextStyle(
                               text: addresspart,
-                              size: 15,
                               color: Colors.black,
                             ),
                             decoration: BoxDecoration(
@@ -260,15 +257,12 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                     children: [
                       MyTextStyle(
                         text: 'MAX LIMIT OF LINKEDLIST -> 7\n',
-                        size: 18,
                       ),
                       MyTextStyle(
                         text: 'LINKED LIST -> $list\n',
-                        size: 18,
                       ),
                       MyTextStyle(
                         text: '$fullmessage\n',
-                        size: 15,
                       )
                     ],
                   ),

@@ -109,7 +109,6 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'FRONT -> ' + front.toString(),
-                        size: 50,
                         color: Colors.black,
                       ),
                       margin: EdgeInsets.all(100),
@@ -127,7 +126,6 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                       child: MyTextStyle(
                         text: 'REAR -> ' + rear.toString(),
                         color: Colors.black,
-                        size: 50,
                       ),
                       margin: EdgeInsets.all(100),
                       decoration: BoxDecoration(
@@ -170,15 +168,12 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
             SizedBox(height: 10),
             MyTextStyle(
               text: 'MAX SIZE OF QUEUE -> 5\n',
-              size: 20,
             ),
             MyTextStyle(
               text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
-              size: 20,
             ),
             MyTextStyle(
               text: 'QUEUE -> ' + q.toString(),
-              size: 20,
             ),
             SizedBox(height: 10),
             RaisedButton(
