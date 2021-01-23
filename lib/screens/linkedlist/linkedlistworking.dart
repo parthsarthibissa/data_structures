@@ -158,6 +158,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             alignment: Alignment.center,
                             child: MyTextStyle(
                               text: datapart == null ? 'Null' : datapart,
+                              color: Colors.black,
                               size: 15,
                             ),
                             decoration: BoxDecoration(
@@ -181,6 +182,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             child: MyTextStyle(
                               text: addresspart,
                               size: 15,
+                              color: Colors.black,
                             ),
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [

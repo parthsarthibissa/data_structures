@@ -81,100 +81,85 @@ class _WorkingScreenState extends State<WorkingScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
-        child: Scaffold(
-      drawer: MyAppDrawer(),
-      body: Column(
-        children: [
-          Header(size: size, title: 'Stack Working'),
-          Expanded(
-            child: SizedBox(
-              height: SizeConfig.screenHeight - 50,
-              width: SizeConfig.screenWidth - 50,
-              child: ListView(
-                padding: EdgeInsets.all(appPadding),
+      child: Scaffold(
+        drawer: MyAppDrawer(),
+        body: Column(
+          children: [
+            Header(size: size, title: 'Stack Working'),
+            FittedBox(
+              child: Row(
                 children: [
                   Container(
-                      width: 150,
-                      height: 150,
+                      width: 180,
+                      height: 180,
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'TOP -> ' + top.toString(),
-                        size: 20,
+                        size: 18,
+                        color: Colors.black,
                       ),
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            Colors.lightGreenAccent[100],
-                            Colors.lightBlueAccent[100]
-                          ]),
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: Colors.lightBlueAccent[100],
-                              width: 6,
-                              style: BorderStyle.solid))),
-                  SizedBox(height: 10),
-                  Container(
-                    width: SizeConfig.screenWidth,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Colors.blue, Colors.lightBlueAccent[100]]),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        MyButton(
-                          onPressed: pushenable ? () => push(c) : null,
-                          text: 'PUSH',
-                        ),
-                        MyButton(
-                          onPressed: popenable ? () => pop() : null,
-                          text: 'POP',
-                        ),
-                        MyButton(
-                          onPressed: () {
-                            clearStack();
-                          },
-                          text: 'Clear Stack',
-                        )
-                      ],
-                    ),
+                        gradient: LinearGradient(colors: [
+                          Colors.lightGreenAccent[100],
+                          Colors.lightBlueAccent[100]
+                        ]),
+                        shape: BoxShape.circle,
+                      )),
+                ],
+              ),
+            ),
+            SizedBox(height: 5),
+            Container(
+              width: SizeConfig.screenWidth,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                shape: BoxShape.rectangle,
+              ),
+              padding: EdgeInsets.all(appPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButton(
+                    onPressed: pushenable ? () => push(c) : null,
+                    text: 'PUSH',
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      MyTextStyle(
-                        text: 'MAX SIZE OF STACK -> 5\n',
-                        size: 20,
-                      ),
-                      MyTextStyle(
-                        text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
-                        size: 20,
-                      ),
-                      MyTextStyle(
-                        text: 'STACK -> ' + s.toString(),
-                        size: 20,
-                      ),
-                      MyTextStyle(
-                        text: fullmessage,
-                        size: 15,
-                      )
-                    ],
+                  MyButton(
+                    onPressed: popenable ? () => pop() : null,
+                    text: 'POP',
                   ),
                   MyButton(
                     onPressed: () {
-                      return Navigator.of(context).pushNamed('/scomp');
+                      clearStack();
                     },
-                    text: 'Applications And Complexity',
+                    text: 'CLEAR STACK',
                   )
                 ],
               ),
             ),
-          )
-        ],
+            SizedBox(height: 10),
+            MyTextStyle(
+              text: 'MAX SIZE OF STACK -> 5\n',
+              size: 20,
+            ),
+            MyTextStyle(
+              text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
+              size: 20,
+            ),
+            MyTextStyle(
+              text: 'STACK -> ' + s.toString(),
+              size: 20,
+            ),
+            SizedBox(height: 10),
+            MyButton(
+              onPressed: () {
+                return Navigator.of(context).pushNamed('/scomp');
+              },
+              text: 'Applications And Complexity of Stack',
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

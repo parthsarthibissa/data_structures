@@ -17,7 +17,10 @@ class MyButton extends StatelessWidget {
           color: Get.isDarkMode
               ? Colors.lightBlueAccent[100]
               : Colors.lightGreenAccent[100],
-          child: MyTextStyle(text: text),
+          child: MyTextStyle(
+            text: text,
+            color: Colors.black,
+          ),
         ));
   }
 }

@@ -6,7 +6,8 @@ class MyTextStyle extends StatelessWidget {
   final String text;
   final double size;
   final String bold;
-  const MyTextStyle({@required this.text, this.size, this.bold});
+  final Color color;
+  const MyTextStyle({@required this.text, this.size, this.bold, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class MyTextStyle extends StatelessWidget {
       text,
       style: GoogleFonts.openSans(
           fontSize: size,
-          color: Colors.black,
           letterSpacing: 1.2,
+          color: color,
           fontWeight: bold == 'yes' ? FontWeight.bold : FontWeight.normal),
     );
   }

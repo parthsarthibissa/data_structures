@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
+import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
@@ -99,7 +100,6 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
         body: Column(
           children: [
             Header(size: size, title: 'Queue Working'),
-            SizedBox(height: 10),
             FittedBox(
               child: Row(
                 children: [
@@ -110,6 +110,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                       child: MyTextStyle(
                         text: 'FRONT -> ' + front.toString(),
                         size: 50,
+                        color: Colors.black,
                       ),
                       margin: EdgeInsets.all(100),
                       decoration: BoxDecoration(
@@ -125,6 +126,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'REAR -> ' + rear.toString(),
+                        color: Colors.black,
                         size: 50,
                       ),
                       margin: EdgeInsets.all(100),
@@ -150,20 +152,18 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  RaisedButton(
-                      onPressed: enqenable ? () => enq(c) : null,
-                      child: MyTextStyle(text: 'ENQUEUE'),
-                      color: Colors.lightGreenAccent[100]),
-                  RaisedButton(
+                  MyButton(
+                    onPressed: enqenable ? () => enq(c) : null,
+                    text: 'ENQUEUE',
+                  ),
+                  MyButton(
                       onPressed: deqenable ? () => deq() : null,
-                      child: MyTextStyle(text: 'DEQUEUE'),
-                      color: Colors.lightGreenAccent[100]),
-                  RaisedButton(
+                      text: 'DEQUEUE'),
+                  MyButton(
                       onPressed: () {
                         clearQueue();
                       },
-                      child: MyTextStyle(text: 'CLEAR QUEUE'),
-                      color: Colors.lightGreenAccent[100])
+                      text: 'CLEAR QUEUE'),
                 ],
               ),
             ),
