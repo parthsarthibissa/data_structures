@@ -1,7 +1,7 @@
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/config/SizeConfig.dart';
+
 import 'package:data_structures/config/ThemeConfig.dart';
 import 'package:data_structures/screens/linkedlist/linkedlistcomp.dart';
 import 'package:data_structures/screens/linkedlist/linkedlistdata.dart';
@@ -58,12 +58,10 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
               children: [
                 Header(
-                  size: size,
                   title: 'Data Structures And Algorithms',
                 ),
                 MyTextStyle(
                   text: 'Welcome!',
-                  size: 20,
                 ),
               ],
             ))));

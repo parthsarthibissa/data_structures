@@ -3,10 +3,10 @@ import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class QWorkingScreen extends StatefulWidget {
   @override
@@ -93,97 +93,99 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    ScreenScaler scaler = ScreenScaler()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
-        body: Column(
-          children: [
-            Header(size: size, title: 'Queue Working'),
-            FittedBox(
-              child: Row(
-                children: [
-                  Container(
-                      width: 500,
-                      height: 500,
-                      alignment: Alignment.center,
-                      child: MyTextStyle(
-                        text: 'FRONT -> ' + front.toString(),
-                        color: Colors.black,
-                      ),
-                      margin: EdgeInsets.all(100),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colors.lightGreenAccent[100],
-                          Colors.lightBlueAccent[100]
-                        ]),
-                        shape: BoxShape.circle,
-                      )),
-                  Container(
-                      width: 500,
-                      height: 500,
-                      alignment: Alignment.center,
-                      child: MyTextStyle(
-                        text: 'REAR -> ' + rear.toString(),
-                        color: Colors.black,
-                      ),
-                      margin: EdgeInsets.all(100),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colors.lightGreenAccent[100],
-                          Colors.lightBlueAccent[100]
-                        ]),
-                        shape: BoxShape.circle,
-                      )),
-                ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(title: 'Queue Working'),
+              FittedBox(
+                child: Row(
+                  children: [
+                    Container(
+                        width: scaler.getWidth(60),
+                        height: scaler.getWidth(60),
+                        alignment: Alignment.center,
+                        child: MyTextStyle(
+                          text: 'FRONT -> ' + front.toString(),
+                          color: Colors.black,
+                        ),
+                        margin: EdgeInsets.all(100),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            Colors.lightGreenAccent[100],
+                            Colors.lightBlueAccent[100]
+                          ]),
+                          shape: BoxShape.circle,
+                        )),
+                    Container(
+                        width: scaler.getWidth(60),
+                        height: scaler.getWidth(60),
+                        alignment: Alignment.center,
+                        child: MyTextStyle(
+                          text: 'REAR -> ' + rear.toString(),
+                          color: Colors.black,
+                        ),
+                        margin: EdgeInsets.all(50),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            Colors.lightGreenAccent[100],
+                            Colors.lightBlueAccent[100]
+                          ]),
+                          shape: BoxShape.circle,
+                        )),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 5),
-            Container(
-              width: SizeConfig.screenWidth,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.blue, Colors.lightBlueAccent[100]]),
-                shape: BoxShape.rectangle,
+              SizedBox(height: 5),
+              Container(
+                width: scaler.getWidth(100),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  shape: BoxShape.rectangle,
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyButton(
+                          onPressed: enqenable ? () => enq(c) : null,
+                          text: 'ENQUEUE',
+                        ),
+                        MyButton(
+                            onPressed: deqenable ? () => deq() : null,
+                            text: 'DEQUEUE'),
+                      ],
+                    ),
+                    MyButton(
+                        onPressed: () => {clearQueue()}, text: 'Clear Queue'),
+                  ],
+                ),
               ),
-              padding: EdgeInsets.all(appPadding),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyButton(
-                    onPressed: enqenable ? () => enq(c) : null,
-                    text: 'ENQUEUE',
-                  ),
-                  MyButton(
-                      onPressed: deqenable ? () => deq() : null,
-                      text: 'DEQUEUE'),
-                  MyButton(
-                      onPressed: () {
-                        clearQueue();
-                      },
-                      text: 'CLEAR QUEUE'),
-                ],
+              SizedBox(height: 10),
+              MyTextStyle(
+                text: 'MAX SIZE OF QUEUE -> 5\n',
               ),
-            ),
-            SizedBox(height: 10),
-            MyTextStyle(
-              text: 'MAX SIZE OF QUEUE -> 5\n',
-            ),
-            MyTextStyle(
-              text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
-            ),
-            MyTextStyle(
-              text: 'QUEUE -> ' + q.toString(),
-            ),
-            SizedBox(height: 10),
-            RaisedButton(
-              onPressed: () {
-                return Navigator.of(context).pushNamed('/qcomp');
-              },
-              color: Colors.lightGreenAccent[100],
-              child: MyTextStyle(text: 'Applications And Complexity of Queue'),
-            )
-          ],
+              MyTextStyle(
+                text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
+              ),
+              MyTextStyle(
+                text: 'QUEUE -> ' + q.toString(),
+              ),
+              SizedBox(height: 10),
+              MyButton(
+                onPressed: () {
+                  return Navigator.of(context).pushNamed('/qcomp');
+                },
+                text: 'Applications And Complexity of Queue',
+              )
+            ],
+          ),
         ),
       ),
     );

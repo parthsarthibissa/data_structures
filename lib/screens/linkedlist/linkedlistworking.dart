@@ -4,8 +4,10 @@ import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/constants.dart';
 import 'package:data_structures/components/header.dart';
-import 'package:data_structures/config/SizeConfig.dart';
+
 import 'dart:collection';
+
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class LinkedListWorking extends StatefulWidget {
   @override
@@ -134,150 +136,139 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    ScreenScaler scaler = ScreenScaler()..init(context);
     return SafeArea(
-        child: Scaffold(
-      drawer: MyAppDrawer(),
-      body: Column(
-        children: [
-          Header(size: size, title: 'LinkedList Working'),
-          Expanded(
-            child: SizedBox(
-              child: ListView(
+      child: Scaffold(
+        drawer: MyAppDrawer(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(title: 'LinkedList Working'),
+              Container(
+                width: scaler.getWidth(100),
                 padding: EdgeInsets.all(appPadding),
-                children: [
-                  Container(
-                    width: SizeConfig.screenHeight,
-                    padding: EdgeInsets.all(appPadding),
-                    child: Row(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        width: scaler.getWidth(32.5),
+                        height: scaler.getWidth(9.5),
+                        alignment: Alignment.center,
+                        child: MyTextStyle(
+                          text: datapart == null ? 'Null' : datapart,
+                          color: Colors.black,
+                        ),
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              Colors.lightGreenAccent[100],
+                              Colors.lightBlueAccent[100]
+                            ]),
+                            shape: BoxShape.rectangle,
+                            border: Border.all(
+                                color: Colors.lightBlueAccent[100],
+                                width: 6,
+                                style: BorderStyle.solid))),
+                    MyTextStyle(
+                      text: '=>',
+                    ),
+                    Container(
+                        width: scaler.getWidth(32.5),
+                        height: scaler.getWidth(9.5),
+                        alignment: Alignment.center,
+                        child: MyTextStyle(
+                          text: addresspart,
+                          color: Colors.black,
+                        ),
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              Colors.lightGreenAccent[100],
+                              Colors.lightBlueAccent[100]
+                            ]),
+                            shape: BoxShape.rectangle,
+                            border: Border.all(
+                                color: Colors.lightBlueAccent[100],
+                                width: 6,
+                                style: BorderStyle.solid))),
+                  ],
+                ),
+              ),
+              Container(
+                width: scaler.getWidth(100),
+                padding: EdgeInsets.all(appPadding),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  shape: BoxShape.rectangle,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                            width: SizeConfig.screenWidth / 3,
-                            height: SizeConfig.screenHeight / 10,
-                            alignment: Alignment.center,
-                            child: MyTextStyle(
-                              text: datapart == null ? 'Null' : datapart,
-                              color: Colors.black,
-                            ),
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  Colors.lightGreenAccent[100],
-                                  Colors.lightBlueAccent[100]
-                                ]),
-                                shape: BoxShape.rectangle,
-                                border: Border.all(
-                                    color: Colors.lightBlueAccent[100],
-                                    width: 6,
-                                    style: BorderStyle.solid))),
-                        MyTextStyle(
-                          text: '=>',
+                        MyButton(
+                          onPressed: () => {insbeg(a)},
+                          text: 'Insert At Beginning',
                         ),
-                        Container(
-                            width: SizeConfig.screenWidth / 3,
-                            height: SizeConfig.screenHeight / 10,
-                            alignment: Alignment.center,
-                            child: MyTextStyle(
-                              text: addresspart,
-                              color: Colors.black,
-                            ),
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  Colors.lightGreenAccent[100],
-                                  Colors.lightBlueAccent[100]
-                                ]),
-                                shape: BoxShape.rectangle,
-                                border: Border.all(
-                                    color: Colors.lightBlueAccent[100],
-                                    width: 6,
-                                    style: BorderStyle.solid))),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: SizeConfig.screenWidth,
-                    padding: EdgeInsets.all(appPadding),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Colors.blue, Colors.lightBlueAccent[100]]),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            MyButton(
-                              onPressed: () => {insbeg(a)},
-                              text: 'Insert At Beginning',
-                            ),
-                            MyButton(
-                              text: 'Insert At End',
-                              onPressed: () => {insend(a)},
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            MyButton(
-                              onPressed: delbegenable == true
-                                  ? () => {delebeg()}
-                                  : null,
-                              text: 'Delete At Beginning',
-                            ),
-                            MyButton(
-                              onPressed: delbegenable == true
-                                  ? () => {delend()}
-                                  : null,
-                              text: 'Delete At End',
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            MyButton(
-                              text: 'Clear Linked List',
-                              onPressed: () => {clearLinkedList()},
-                            )
-                          ],
+                        MyButton(
+                          text: 'Insert At End',
+                          onPressed: () => {insend(a)},
                         )
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MyButton(
+                          onPressed:
+                              delbegenable == true ? () => {delebeg()} : null,
+                          text: 'Delete At Beginning',
+                        ),
+                        MyButton(
+                          onPressed:
+                              delbegenable == true ? () => {delend()} : null,
+                          text: 'Delete At End',
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MyButton(
+                          text: 'Clear Linked List',
+                          onPressed: () => {clearLinkedList()},
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyTextStyle(
+                    text: 'MAX LIMIT OF LINKEDLIST -> 7\n',
                   ),
-                  SizedBox(height: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MyTextStyle(
-                        text: 'MAX LIMIT OF LINKEDLIST -> 7\n',
-                      ),
-                      MyTextStyle(
-                        text: 'LINKED LIST -> $list\n',
-                      ),
-                      MyTextStyle(
-                        text: '$fullmessage\n',
-                      )
-                    ],
+                  MyTextStyle(
+                    text: 'LINKED LIST -> $list\n',
                   ),
-                  MyButton(
-                    onPressed: () {
-                      return Navigator.of(context).pushNamed('/LLcomp');
-                    },
-                    text: 'Applications And Complexity',
+                  MyTextStyle(
+                    text: '$fullmessage\n',
                   )
                 ],
               ),
-            ),
-          )
-        ],
+              MyButton(
+                onPressed: () {
+                  return Navigator.of(context).pushNamed('/LLcomp');
+                },
+                text: 'Applications And Complexity',
+              )
+            ],
+          ),
+        ),
       ),
-    ));
+    );
   }
 }

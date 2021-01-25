@@ -13,29 +13,24 @@ class BaseComp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
           drawer: MyAppDrawer(),
-          body: Column(
-            children: [
-              Header(size: size, title: 'Applications of ' + title),
-              Center(
-                child: MyTextStyle(
-                  text: title + '\n',
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Header(title: 'Applications of ' + title),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: MyTextStyle(
+                    text: title + '\n',
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(appPadding),
-                  child: ListView(children: [
-                    MyTextStyle(text: application),
-                    MyTextStyle(text: complex),
-                  ]),
-                ),
-              ),
-              Divider(),
-            ],
+                MyTextStyle(text: application),
+                MyTextStyle(text: complex),
+                Divider(),
+              ],
+            ),
           )),
     );
   }

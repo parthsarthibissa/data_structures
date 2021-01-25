@@ -22,7 +22,6 @@ class _AppSettingsState extends State<AppSettings> {
                 child: Column(
               children: [
                 Header(
-                  size: size,
                   title: 'Data Structures And Algorithms',
                 ),
                 MyTextStyle(

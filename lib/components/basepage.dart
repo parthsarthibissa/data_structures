@@ -1,9 +1,9 @@
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/config/SizeConfig.dart';
 import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class BasePage extends StatelessWidget {
   const BasePage({this.dsaData, this.button, this.image, @required this.title});
@@ -15,30 +15,26 @@ class BasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
       drawer: MyAppDrawer(),
-      body: Column(
-        children: [
-          Header(
-            size: size,
-            title: title,
-          ),
-          image,
-          Expanded(
-              child: ListView(
-            padding: EdgeInsets.all(appPadding),
-            children: [
-              MyTextStyle(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Header(
+              title: title,
+            ),
+            image,
+            Container(
+              padding: EdgeInsets.all(20),
+              child: MyTextStyle(
                 text: dsaData,
               ),
-            ],
-          )),
-          button,
-          Divider(),
-        ],
+            ),
+            button,
+            Divider(),
+          ],
+        ),
       ),
     ));
   }

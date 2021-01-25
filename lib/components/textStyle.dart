@@ -16,7 +16,7 @@ class MyTextStyle extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.openSans(
-          fontSize: scaler.getTextSize(15),
+          fontSize: scaler.getTextSize(10),
           letterSpacing: 1,
           color: color,
           fontWeight: bold == 'yes' ? FontWeight.bold : FontWeight.normal),

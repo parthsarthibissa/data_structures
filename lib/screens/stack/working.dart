@@ -3,8 +3,6 @@ import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/config/SizeConfig.dart';
-import 'package:data_structures/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
@@ -80,81 +78,82 @@ class _WorkingScreenState extends State<WorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     ScreenScaler scaler = ScreenScaler()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
-        body: Column(
-          children: [
-            Header(size: size, title: 'Stack Working'),
-            FittedBox(
-              child: Row(
-                children: [
-                  Container(
-                      width: scaler.getWidth(30),
-                      height: scaler.getHeight(30),
-                      alignment: Alignment.center,
-                      child: MyTextStyle(
-                        text: 'TOP -> ' + top.toString(),
-                        color: Colors.black,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colors.lightGreenAccent[100],
-                          Colors.lightBlueAccent[100]
-                        ]),
-                        shape: BoxShape.circle,
-                      )),
-                ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(title: 'Stack Working'),
+              FittedBox(
+                child: Row(
+                  children: [
+                    Container(
+                        width: scaler.getWidth(30),
+                        height: scaler.getHeight(30),
+                        alignment: Alignment.center,
+                        child: MyTextStyle(
+                          text: 'TOP -> ' + top.toString(),
+                          color: Colors.black,
+                        ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            Colors.lightGreenAccent[100],
+                            Colors.lightBlueAccent[100]
+                          ]),
+                          shape: BoxShape.circle,
+                        )),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: scaler.getWidth(100),
-              height: scaler.getHeight(5),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.blue, Colors.lightBlueAccent[100]]),
-                shape: BoxShape.rectangle,
+              Container(
+                width: scaler.getWidth(100),
+                height: scaler.getHeight(5),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  shape: BoxShape.rectangle,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    MyButton(
+                      onPressed: pushenable ? () => push(c) : null,
+                      text: 'PUSH',
+                    ),
+                    MyButton(
+                      onPressed: popenable ? () => pop() : null,
+                      text: 'POP',
+                    ),
+                    MyButton(
+                      onPressed: () {
+                        clearStack();
+                      },
+                      text: 'CLEAR STACK',
+                    )
+                  ],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyButton(
-                    onPressed: pushenable ? () => push(c) : null,
-                    text: 'PUSH',
-                  ),
-                  MyButton(
-                    onPressed: popenable ? () => pop() : null,
-                    text: 'POP',
-                  ),
-                  MyButton(
-                    onPressed: () {
-                      clearStack();
-                    },
-                    text: 'CLEAR STACK',
-                  )
-                ],
+              SizedBox(height: scaler.getHeight(1.2)),
+              MyTextStyle(
+                text: 'MAX SIZE OF STACK -> 5\n',
               ),
-            ),
-            SizedBox(height: scaler.getHeight(1.2)),
-            MyTextStyle(
-              text: 'MAX SIZE OF STACK -> 5\n',
-            ),
-            MyTextStyle(
-              text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
-            ),
-            MyTextStyle(
-              text: 'STACK -> ' + s.toString(),
-            ),
-            SizedBox(height: 10),
-            MyButton(
-              onPressed: () {
-                return Navigator.of(context).pushNamed('/scomp');
-              },
-              text: 'Applications And Complexity of Stack',
-            )
-          ],
+              MyTextStyle(
+                text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
+              ),
+              MyTextStyle(
+                text: 'STACK -> ' + s.toString(),
+              ),
+              SizedBox(height: 10),
+              MyButton(
+                onPressed: () {
+                  return Navigator.of(context).pushNamed('/scomp');
+                },
+                text: 'Applications And Complexity of Stack',
+              )
+            ],
+          ),
         ),
       ),
     );

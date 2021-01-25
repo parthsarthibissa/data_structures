@@ -1,21 +1,20 @@
 import 'package:data_structures/components/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:data_structures/constants.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class Header extends StatelessWidget {
-  final Size size;
   final String title;
-  Header({@required this.size, @required this.title});
+  Header({@required this.title});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.2,
       margin: EdgeInsets.only(bottom: appPadding * 1.5),
       child: Stack(
         children: [
           Container(
-            height: size.height * 0.12,
-            width: size.width,
+            height: MediaQuery.of(context).size.height * 0.2 - 27,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
                 Colors.lightBlueAccent[200],
@@ -32,12 +31,12 @@ class Header extends StatelessWidget {
                     onPressed: () {
                       Scaffold.of(context).openDrawer();
                     },
-                    icon: Icon(Icons.menu_open),
+                    icon: Icon(Icons.menu_sharp),
                     label: MyTextStyle(
                       text: '',
                     )),
                 FittedBox(
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.fill,
                     child: MyTextStyle(
                       text: title,
                       bold: 'yes',
