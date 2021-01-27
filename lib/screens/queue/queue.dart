@@ -17,7 +17,7 @@ class _QueueScreenState extends State<QueueScreen> {
           'Queue is an abstract data structure.A queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue).\nQueue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first.\nQueue has two main operations enqueue and dequeue. Enqueue is used to insert elements inside queue and dequeue is used to remove elements from queue.',
       button: MyButton(
         onPressed: () {
-          return Navigator.of(context).pushNamed('/qworking');
+          return Navigator.of(context).popAndPushNamed('/qworking');
         },
         text: 'Working Of Queue',
       ),

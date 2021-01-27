@@ -3,10 +3,9 @@ import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/constants.dart';
+import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class QWorkingScreen extends StatefulWidget {
   @override
@@ -60,7 +59,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
     q.removeFirst();
     setState(() {
       if (front > rear) {
-        enqenable = true;
+        enqenable = false;
         emptymessage = 'Queue Underflow !!';
         fullmessage = 'Oops! front>rear ';
         front = -1;
@@ -93,7 +92,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenScaler scaler = ScreenScaler()..init(context);
+    DeviceSizeConfig()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
@@ -105,11 +104,11 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                 child: Row(
                   children: [
                     Container(
-                        width: scaler.getWidth(60),
-                        height: scaler.getWidth(60),
+                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
+                        height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
-                          text: 'FRONT -> ' + front.toString(),
+                          text: 'FRONT = ' + front.toString(),
                           color: Colors.black,
                         ),
                         margin: EdgeInsets.all(100),
@@ -121,11 +120,11 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                           shape: BoxShape.circle,
                         )),
                     Container(
-                        width: scaler.getWidth(60),
-                        height: scaler.getWidth(60),
+                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
+                        height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
-                          text: 'REAR -> ' + rear.toString(),
+                          text: 'REAR = ' + rear.toString(),
                           color: Colors.black,
                         ),
                         margin: EdgeInsets.all(50),
@@ -141,7 +140,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               ),
               SizedBox(height: 5),
               Container(
-                width: scaler.getWidth(100),
+                width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.blue, Colors.lightBlueAccent[100]]),
@@ -169,21 +168,15 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               ),
               SizedBox(height: 10),
               MyTextStyle(
-                text: 'MAX SIZE OF QUEUE -> 5\n',
+                text: 'MAX SIZE OF QUEUE = 5\n',
               ),
               MyTextStyle(
-                text: 'CURRENT SIZE -> ' + q.length.toString() + '\n',
+                text: 'QUEUE = ' + q.toString(),
               ),
               MyTextStyle(
-                text: 'QUEUE -> ' + q.toString(),
+                text: fullmessage,
+                color: Colors.red,
               ),
-              SizedBox(height: 10),
-              MyButton(
-                onPressed: () {
-                  return Navigator.of(context).pushNamed('/qcomp');
-                },
-                text: 'Applications And Complexity of Queue',
-              )
             ],
           ),
         ),

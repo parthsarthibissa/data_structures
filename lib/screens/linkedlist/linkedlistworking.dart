@@ -1,13 +1,11 @@
 import 'package:data_structures/components/mybutton.dart';
+import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/components/drawer.dart';
-import 'package:data_structures/constants.dart';
+
 import 'package:data_structures/components/header.dart';
-
 import 'dart:collection';
-
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class LinkedListWorking extends StatefulWidget {
   @override
@@ -128,6 +126,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
         list.clear();
         delbegenable = false;
         datapart = '';
+        fullmessage = '';
         addresspart = '';
       }
     });
@@ -136,7 +135,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenScaler scaler = ScreenScaler()..init(context);
+    DeviceSizeConfig()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
@@ -145,14 +144,13 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
             children: [
               Header(title: 'LinkedList Working'),
               Container(
-                width: scaler.getWidth(100),
-                padding: EdgeInsets.all(appPadding),
+                padding: EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        width: scaler.getWidth(32.5),
-                        height: scaler.getWidth(9.5),
+                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
+                        height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: datapart == null ? 'Null' : datapart,
@@ -172,8 +170,8 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                       text: '=>',
                     ),
                     Container(
-                        width: scaler.getWidth(32.5),
-                        height: scaler.getWidth(9.5),
+                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
+                        height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: addresspart,
@@ -193,8 +191,8 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                 ),
               ),
               Container(
-                width: scaler.getWidth(100),
-                padding: EdgeInsets.all(appPadding),
+                width: DeviceSizeConfig.screenWidth,
+                padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.blue, Colors.lightBlueAccent[100]]),
@@ -245,26 +243,29 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
               ),
               SizedBox(height: 10),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  MyTextStyle(
-                    text: 'MAX LIMIT OF LINKEDLIST -> 7\n',
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: MyTextStyle(
+                      text: 'MAX LIMIT OF LINKEDLIST = 7',
+                    ),
                   ),
-                  MyTextStyle(
-                    text: 'LINKED LIST -> $list\n',
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: MyTextStyle(
+                      text: 'LINKED LIST = $list',
+                    ),
                   ),
-                  MyTextStyle(
-                    text: '$fullmessage\n',
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: MyTextStyle(
+                      text: '$fullmessage',
+                      color: Colors.red,
+                    ),
                   )
                 ],
               ),
-              MyButton(
-                onPressed: () {
-                  return Navigator.of(context).pushNamed('/LLcomp');
-                },
-                text: 'Applications And Complexity',
-              )
             ],
           ),
         ),

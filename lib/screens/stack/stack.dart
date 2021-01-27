@@ -17,7 +17,7 @@ class _StackScreenState extends State<StackScreen> {
             'A stack is an Abstract Data Type (ADT).This feature makes it LIFO data structure.\nIn stack terminology, insertion operation is called PUSH operation and removal operation is called POP operation.\nFor example, we can place or remove a card or plate from the top of the stack only',
         button: MyButton(
           onPressed: () {
-            return Navigator.of(context).pushNamed('/working');
+            return Navigator.of(context).popAndPushNamed('/working');
           },
           text: 'Working Of Stack',
         ));

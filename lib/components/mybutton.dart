@@ -1,7 +1,6 @@
 import 'package:data_structures/components/textStyle.dart';
-
+import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import 'package:get/get.dart';
 
 class MyButton extends StatelessWidget {
@@ -11,10 +10,10 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenScaler scaler = ScreenScaler()..init(context);
     return ButtonTheme(
-        minWidth: scaler.getWidth(3),
-        height: scaler.getHeight(3),
+        minWidth: DeviceSizeConfig.safeBlockHorizontal * 2,
+        height: DeviceSizeConfig.safeBlockVertical * 4,
+        disabledColor: Colors.blueGrey,
         child: RaisedButton(
           onPressed: onPressed,
           color: Get.isDarkMode

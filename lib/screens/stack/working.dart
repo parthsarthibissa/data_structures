@@ -3,8 +3,8 @@ import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/mybutton.dart';
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 import 'package:flutter/rendering.dart';
 
@@ -57,6 +57,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       fullmessage = '';
       if (top == -1 || top == 1) {
         popenable = false;
+        fullmessage = 'Can\'t Pop only 1 Element Left!';
         c = 2;
       }
       print(s);
@@ -78,7 +79,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenScaler scaler = ScreenScaler()..init(context);
+    DeviceSizeConfig()..init(context);
     return SafeArea(
       child: Scaffold(
         drawer: MyAppDrawer(),
@@ -86,45 +87,51 @@ class _WorkingScreenState extends State<WorkingScreen> {
           child: Column(
             children: [
               Header(title: 'Stack Working'),
-              FittedBox(
-                child: Row(
-                  children: [
-                    Container(
-                        width: scaler.getWidth(30),
-                        height: scaler.getHeight(30),
-                        alignment: Alignment.center,
-                        child: MyTextStyle(
-                          text: 'TOP -> ' + top.toString(),
-                          color: Colors.black,
-                        ),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            Colors.lightGreenAccent[100],
-                            Colors.lightBlueAccent[100]
-                          ]),
-                          shape: BoxShape.circle,
-                        )),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      width: DeviceSizeConfig.blockSizeHorizontal * 30,
+                      height: DeviceSizeConfig.blockSizeVertical * 15,
+                      alignment: Alignment.center,
+                      child: MyTextStyle(
+                        text: 'TOP = ' + top.toString(),
+                        color: Colors.black,
+                        size: 18,
+                      ),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Colors.lightGreenAccent[100],
+                          Colors.lightBlueAccent[100]
+                        ]),
+                        shape: BoxShape.circle,
+                      )),
+                ],
+              ),
+              SizedBox(
+                height: 5,
               ),
               Container(
-                width: scaler.getWidth(100),
-                height: scaler.getHeight(5),
+                width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.blue, Colors.lightBlueAccent[100]]),
                   shape: BoxShape.rectangle,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Column(
                   children: [
-                    MyButton(
-                      onPressed: pushenable ? () => push(c) : null,
-                      text: 'PUSH',
-                    ),
-                    MyButton(
-                      onPressed: popenable ? () => pop() : null,
-                      text: 'POP',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MyButton(
+                          onPressed: pushenable ? () => push(c) : null,
+                          text: 'PUSH',
+                        ),
+                        MyButton(
+                          onPressed: popenable ? () => pop() : null,
+                          text: 'POP',
+                        ),
+                      ],
                     ),
                     MyButton(
                       onPressed: () {
@@ -135,23 +142,17 @@ class _WorkingScreenState extends State<WorkingScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: scaler.getHeight(1.2)),
               MyTextStyle(
-                text: 'MAX SIZE OF STACK -> 5\n',
+                text: 'MAX SIZE OF STACK = 5\n',
               ),
               MyTextStyle(
-                text: 'CURRENT SIZE -> ' + s.length.toString() + '\n',
+                text: 'STACK = ' + s.toString(),
               ),
               MyTextStyle(
-                text: 'STACK -> ' + s.toString(),
+                text: fullmessage,
+                color: Colors.red,
+                size: 10,
               ),
-              SizedBox(height: 10),
-              MyButton(
-                onPressed: () {
-                  return Navigator.of(context).pushNamed('/scomp');
-                },
-                text: 'Applications And Complexity of Stack',
-              )
             ],
           ),
         ),

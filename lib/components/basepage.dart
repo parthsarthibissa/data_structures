@@ -1,9 +1,8 @@
 import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'package:data_structures/components/textStyle.dart';
-import 'package:data_structures/constants.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class BasePage extends StatelessWidget {
   const BasePage({this.dsaData, this.button, this.image, @required this.title});

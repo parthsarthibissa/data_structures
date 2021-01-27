@@ -1,20 +1,21 @@
 import 'package:data_structures/components/textStyle.dart';
+import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
-import 'package:data_structures/constants.dart';
-import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class Header extends StatelessWidget {
   final String title;
   Header({@required this.title});
   @override
   Widget build(BuildContext context) {
+    DeviceSizeConfig()..init(context);
     return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
-      margin: EdgeInsets.only(bottom: appPadding * 1.5),
+      height: DeviceSizeConfig.blockSizeVertical * 15,
+      width: DeviceSizeConfig.screenWidth,
+      margin: EdgeInsets.only(bottom: 20 * 1.5),
       child: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.2 - 27,
+            height: DeviceSizeConfig.blockSizeVertical * 20 - 10,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
                 Colors.lightBlueAccent[200],
@@ -35,12 +36,13 @@ class Header extends StatelessWidget {
                     label: MyTextStyle(
                       text: '',
                     )),
-                FittedBox(
-                    fit: BoxFit.fill,
-                    child: MyTextStyle(
-                      text: title,
-                      bold: 'yes',
-                    )),
+                Container(
+                  width: DeviceSizeConfig.screenWidth - 120,
+                  child: MyTextStyle(
+                    text: title,
+                    bold: 'yes',
+                  ),
+                ),
               ],
             ),
           ),
