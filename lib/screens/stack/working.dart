@@ -91,6 +91,8 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       width: DeviceSizeConfig.blockSizeHorizontal * 30,
                       height: DeviceSizeConfig.blockSizeVertical * 15,
                       alignment: Alignment.center,
@@ -112,6 +114,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 height: 5,
               ),
               Container(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(

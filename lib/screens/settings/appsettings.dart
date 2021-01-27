@@ -33,6 +33,7 @@ class _AppSettingsState extends State<AppSettings> {
                   thickness: 1,
                 ),
                 Container(
+                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                     width: size.width,
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,

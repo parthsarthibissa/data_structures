@@ -144,11 +144,14 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
             children: [
               Header(title: 'LinkedList Working'),
               Container(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 padding: EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         width: DeviceSizeConfig.blockSizeHorizontal * 30,
                         height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
@@ -170,6 +173,8 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                       text: '=>',
                     ),
                     Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         width: DeviceSizeConfig.blockSizeHorizontal * 30,
                         height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
@@ -193,6 +198,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
               Container(
                 width: DeviceSizeConfig.screenWidth,
                 padding: EdgeInsets.all(20),
+                margin: EdgeInsets.symmetric(vertical: 20),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.blue, Colors.lightBlueAccent[100]]),
@@ -246,6 +252,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     padding: EdgeInsets.all(10),
                     child: MyTextStyle(
                       text: 'MAX LIMIT OF LINKEDLIST = 7',
@@ -253,12 +260,14 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     child: MyTextStyle(
                       text: 'LINKED LIST = $list',
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     child: MyTextStyle(
                       text: '$fullmessage',
                       color: Colors.red,

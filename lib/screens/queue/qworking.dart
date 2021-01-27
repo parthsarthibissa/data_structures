@@ -104,6 +104,8 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                 child: Row(
                   children: [
                     Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         width: DeviceSizeConfig.blockSizeHorizontal * 30,
                         height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
@@ -111,7 +113,6 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                           text: 'FRONT = ' + front.toString(),
                           color: Colors.black,
                         ),
-                        margin: EdgeInsets.all(100),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(colors: [
                             Colors.lightGreenAccent[100],
@@ -120,6 +121,8 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                           shape: BoxShape.circle,
                         )),
                     Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         width: DeviceSizeConfig.blockSizeHorizontal * 30,
                         height: DeviceSizeConfig.blockSizeVertical * 20,
                         alignment: Alignment.center,
@@ -127,7 +130,6 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                           text: 'REAR = ' + rear.toString(),
                           color: Colors.black,
                         ),
-                        margin: EdgeInsets.all(50),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(colors: [
                             Colors.lightGreenAccent[100],
@@ -140,6 +142,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
               ),
               SizedBox(height: 5),
               Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
