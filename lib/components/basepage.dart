@@ -18,6 +18,7 @@ class BasePage extends StatelessWidget {
         child: Scaffold(
       drawer: MyAppDrawer(),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             Header(

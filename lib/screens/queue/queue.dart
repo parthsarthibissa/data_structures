@@ -14,7 +14,13 @@ class _QueueScreenState extends State<QueueScreen> {
       title: 'Queue',
       image: Image.asset('assets/Queue.png'),
       dsaData:
-          'Queue is an abstract data structure.A queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue).\nQueue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first.\nQueue has two main operations enqueue and dequeue. Enqueue is used to insert elements inside queue and dequeue is used to remove elements from queue.',
+          '''Queue is an abstract data structure, somewhat similar to Stacks. Unlike stacks, a queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue). Queue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first.
+
+Queue in Real-World
+A real-world example of queue can be a single-lane one-way road, where the vehicle enters first, exits first. More real-world examples can be seen as queues at the ticket windows and bus-stops.
+
+Queue Implementation
+As in stacks, a queue can also be implemented using Arrays, Linked-lists, Pointers and Structures. For the sake of simplicity, we shall implement queues using one-dimensional array.''',
       button: MyButton(
         onPressed: () {
           return Navigator.of(context).popAndPushNamed('/qworking');

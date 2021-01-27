@@ -198,51 +198,35 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
               Container(
                 width: DeviceSizeConfig.screenWidth,
                 padding: EdgeInsets.all(20),
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.blue, Colors.lightBlueAccent[100]]),
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyButton(
-                          onPressed: () => {insbeg(a)},
-                          text: 'Insert At Beginning',
-                        ),
-                        MyButton(
-                          text: 'Insert At End',
-                          onPressed: () => {insend(a)},
-                        )
-                      ],
+                    MyButton(
+                      onPressed: () => {insbeg(a)},
+                      text: 'Insert At Beginning',
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyButton(
-                          onPressed:
-                              delbegenable == true ? () => {delebeg()} : null,
-                          text: 'Delete At Beginning',
-                        ),
-                        MyButton(
-                          onPressed:
-                              delbegenable == true ? () => {delend()} : null,
-                          text: 'Delete At End',
-                        ),
-                      ],
+                    MyButton(
+                      text: 'Insert At End',
+                      onPressed: () => {insend(a)},
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        MyButton(
-                          text: 'Clear Linked List',
-                          onPressed: () => {clearLinkedList()},
-                        )
-                      ],
+                    MyButton(
+                      onPressed:
+                          delbegenable == true ? () => {delebeg()} : null,
+                      text: 'Delete At Beginning',
+                    ),
+                    MyButton(
+                      onPressed: delbegenable == true ? () => {delend()} : null,
+                      text: 'Delete At End',
+                    ),
+                    MyButton(
+                      text: 'Clear Linked List',
+                      onPressed: () => {clearLinkedList()},
                     )
                   ],
                 ),
