@@ -25,7 +25,7 @@ class MyAppDrawer extends StatelessWidget {
                 bold: 'yes',
               ),
               accountEmail: MyTextStyle(
-                text: 'Version 1.1',
+                text: 'Version 1.2',
               )),
           Container(
               decoration: BoxDecoration(
