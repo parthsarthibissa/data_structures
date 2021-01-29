@@ -118,7 +118,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                             Colors.lightGreenAccent[100],
                             Colors.lightBlueAccent[100]
                           ]),
-                          shape: BoxShape.circle,
+                          shape: BoxShape.rectangle,
                         )),
                     Container(
                         margin:
@@ -131,12 +131,11 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                           color: Colors.black,
                         ),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            Colors.lightGreenAccent[100],
-                            Colors.lightBlueAccent[100]
-                          ]),
-                          shape: BoxShape.circle,
-                        )),
+                            gradient: LinearGradient(colors: [
+                              Colors.lightGreenAccent[100],
+                              Colors.lightBlueAccent[100]
+                            ]),
+                            shape: BoxShape.rectangle)),
                   ],
                 ),
               ),
