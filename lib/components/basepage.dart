@@ -16,26 +16,25 @@ class BasePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      drawer: MyAppDrawer(),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Header(
-              title: title,
-            ),
-            image,
-            Container(
-              padding: EdgeInsets.all(20),
-              child: MyTextStyle(
-                text: dsaData,
-              ),
-            ),
-            button,
-            Divider(),
-          ],
-        ),
-      ),
-    ));
+            drawer: MyAppDrawer(),
+            body: ListView(
+              children: [
+                Header(title: title),
+                SingleChildScrollView(
+                  padding: EdgeInsets.all(20),
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      image,
+                      MyTextStyle(
+                        text: dsaData,
+                      ),
+                      button,
+                      Divider(),
+                    ],
+                  ),
+                ),
+              ],
+            )));
   }
 }
