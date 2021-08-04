@@ -7,6 +7,7 @@ import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class WorkingScreen extends StatefulWidget {
   @override
@@ -98,14 +99,11 @@ class _WorkingScreenState extends State<WorkingScreen> {
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'TOP = ' + top.toString(),
-                        color: Colors.black,
+                        color: Get.isDarkMode ? Colors.black : Colors.white,
                         size: 18,
                       ),
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colors.lightGreenAccent[100],
-                          Colors.lightBlueAccent[100]
-                        ]),
+                        color: Get.isDarkMode ? Colors.white : Colors.black,
                         shape: BoxShape.circle,
                       )),
                 ],
@@ -117,8 +115,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
                 margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(

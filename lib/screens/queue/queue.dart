@@ -12,7 +12,11 @@ class _QueueScreenState extends State<QueueScreen> {
   Widget build(BuildContext context) {
     return BasePage(
       title: 'Queue',
-      image: Image.asset('assets/Queue.png'),
+      image: Image.asset(
+        'assets/Queue.png',
+        scale: 2,
+        fit: BoxFit.cover,
+      ),
       dsaData:
           '''Queue is an abstract data structure, somewhat similar to Stacks. Unlike stacks, a queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue). Queue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first.
 

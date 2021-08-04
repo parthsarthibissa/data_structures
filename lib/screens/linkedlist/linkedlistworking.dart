@@ -7,6 +7,8 @@ import 'package:data_structures/components/drawer.dart';
 import 'package:data_structures/components/header.dart';
 import 'dart:collection';
 
+import 'package:get/get.dart';
+
 class LinkedListWorking extends StatefulWidget {
   @override
   _LinkedListWorkingState createState() => _LinkedListWorkingState();
@@ -160,10 +162,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                           color: Colors.black,
                         ),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.lightGreenAccent[100],
-                              Colors.lightBlueAccent[100]
-                            ]),
+                            color: Get.isDarkMode ? Colors.white : Colors.black,
                             shape: BoxShape.rectangle,
                             border: Border.all(
                                 color: Colors.lightBlueAccent[100],
@@ -183,10 +182,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                           color: Colors.black,
                         ),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.lightGreenAccent[100],
-                              Colors.lightBlueAccent[100]
-                            ]),
+                            color: Get.isDarkMode ? Colors.white : Colors.black,
                             shape: BoxShape.rectangle,
                             border: Border.all(
                                 color: Colors.lightBlueAccent[100],
@@ -200,8 +196,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(

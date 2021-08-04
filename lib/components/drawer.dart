@@ -1,6 +1,7 @@
 import 'package:data_structures/components/textStyle.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyAppDrawer extends StatelessWidget {
   @override
@@ -11,32 +12,28 @@ class MyAppDrawer extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(Icons.close),
-            color: Colors.lightGreen[200],
+            color: Get.isDarkMode ? Colors.white : Colors.black,
             onPressed: () => Navigator.pop(context),
           ),
           UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                color: Get.isDarkMode ? Colors.white : Colors.black,
+              ),
               accountName: MyTextStyle(
                 text: 'Data Structures And Algorithms',
                 bold: 'yes',
+                color: Get.isDarkMode ? Colors.black : Colors.white,
               ),
               accountEmail: MyTextStyle(
-                text: 'Version 1.2',
-              )),
+                  text: 'Version 1.2',
+                  color: Get.isDarkMode ? Colors.black : Colors.white)),
           Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                  color: Get.isDarkMode ? Colors.white : Colors.black),
               child: ListTile(
                 title: MyTextStyle(
-                  text: 'HomeScreen',
-                ),
+                    text: 'HomeScreen',
+                    color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/home');
                 },
@@ -44,14 +41,11 @@ class MyAppDrawer extends StatelessWidget {
           SizedBox(height: 5),
           Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                  color: Get.isDarkMode ? Colors.white : Colors.black),
               child: ListTile(
                 title: MyTextStyle(
-                  text: 'Stack',
-                ),
+                    text: 'Stack',
+                    color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/stack');
                 },
@@ -59,14 +53,11 @@ class MyAppDrawer extends StatelessWidget {
           SizedBox(height: 5),
           Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                  color: Get.isDarkMode ? Colors.white : Colors.black),
               child: ListTile(
                 title: MyTextStyle(
-                  text: 'Queue',
-                ),
+                    text: 'Queue',
+                    color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/queue');
                 },
@@ -74,14 +65,11 @@ class MyAppDrawer extends StatelessWidget {
           SizedBox(height: 5),
           Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                  color: Get.isDarkMode ? Colors.white : Colors.black),
               child: ListTile(
                 title: MyTextStyle(
-                  text: 'LinkedList',
-                ),
+                    text: 'LinkedList',
+                    color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/LLdata');
                 },
@@ -89,14 +77,11 @@ class MyAppDrawer extends StatelessWidget {
           SizedBox(height: 5),
           Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.lightBlueAccent[200],
-                Colors.lightGreenAccent[200]
-              ])),
+                  color: Get.isDarkMode ? Colors.white : Colors.black),
               child: ListTile(
                 title: MyTextStyle(
-                  text: 'App Settings',
-                ),
+                    text: 'App Settings',
+                    color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
                   return Navigator.popAndPushNamed(context, '/settings');
                 },

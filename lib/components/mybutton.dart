@@ -14,14 +14,13 @@ class MyButton extends StatelessWidget {
         minWidth: DeviceSizeConfig.safeBlockHorizontal * 2,
         height: DeviceSizeConfig.safeBlockVertical * 4,
         disabledColor: Colors.blueGrey,
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: onPressed,
-          color: Get.isDarkMode
-              ? Colors.lightBlueAccent[100]
-              : Colors.lightGreenAccent[100],
+          style: ElevatedButton.styleFrom(
+              primary: Get.isDarkMode ? Colors.black : Colors.white),
           child: MyTextStyle(
             text: text,
-            color: Colors.black,
+            color: Get.isDarkMode ? Colors.white : Colors.black,
           ),
         ));
   }

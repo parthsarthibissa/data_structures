@@ -6,6 +6,7 @@ import 'package:data_structures/components/textStyle.dart';
 import 'package:data_structures/config/Sizing/SizingConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class QWorkingScreen extends StatefulWidget {
   @override
@@ -111,13 +112,10 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: 'FRONT = ' + front.toString(),
-                          color: Colors.black,
+                          color: Get.isDarkMode ? Colors.black : Colors.white,
                         ),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            Colors.lightGreenAccent[100],
-                            Colors.lightBlueAccent[100]
-                          ]),
+                          color: Get.isDarkMode ? Colors.white : Colors.black,
                           shape: BoxShape.rectangle,
                         )),
                     Container(
@@ -128,13 +126,10 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: 'REAR = ' + rear.toString(),
-                          color: Colors.black,
+                          color: Get.isDarkMode ? Colors.black : Colors.white,
                         ),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.lightGreenAccent[100],
-                              Colors.lightBlueAccent[100]
-                            ]),
+                            color: Get.isDarkMode ? Colors.white : Colors.black,
                             shape: BoxShape.rectangle)),
                   ],
                 ),
@@ -144,8 +139,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: DeviceSizeConfig.screenWidth,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.blue, Colors.lightBlueAccent[100]]),
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   shape: BoxShape.rectangle,
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),

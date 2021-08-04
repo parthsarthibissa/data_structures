@@ -34,7 +34,11 @@ Each link carries a data field(s) and a link field called next.
 Each link is linked with its next link using its next link.
 
 Last link carries a link as null to mark the end of the list.''',
-      image: Image.asset('assets/Linkedlist.png'),
+      image: Image.asset(
+        'assets/Linkedlist.png',
+        scale: 2,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

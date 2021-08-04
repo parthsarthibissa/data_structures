@@ -12,7 +12,11 @@ class _StackScreenState extends State<StackScreen> {
   Widget build(BuildContext context) {
     return BasePage(
         title: 'Stack',
-        image: Image.asset('assets/Stack.png'),
+        image: Image.asset(
+          'assets/Stack.png',
+          scale: 2,
+          fit: BoxFit.cover,
+        ),
         dsaData:
             '''A stack is an Abstract Data Type (ADT), commonly used in most programming languages. It is named stack as it behaves like a real-world stack, for example – a deck of cards or a pile of plates, etc.
 
