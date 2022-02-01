@@ -16,13 +16,13 @@ class WorkingScreen extends StatefulWidget {
 
 class _WorkingScreenState extends State<WorkingScreen> {
   int c = 1;
-  TextEditingController controller;
+  TextEditingController? controller;
   String emptymessage = '';
   String fullmessage = '';
   bool popenable = false;
   bool pushenable = true;
   final s = Queue<dynamic>();
-  int top;
+  int? top = -1;
 
   void initState() {
     super.initState();
@@ -47,7 +47,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       }
     });
     print(c);
-    return top;
+    return top!;
   }
 
   int pop() {
@@ -63,7 +63,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       }
       print(s);
     });
-    return top;
+    return top!;
   }
 
   int clearStack() {
@@ -75,7 +75,7 @@ class _WorkingScreenState extends State<WorkingScreen> {
       pushenable = true;
       fullmessage = '';
     });
-    return top;
+    return top!;
   }
 
   @override
@@ -94,8 +94,8 @@ class _WorkingScreenState extends State<WorkingScreen> {
                   Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      width: DeviceSizeConfig.blockSizeHorizontal * 30,
-                      height: DeviceSizeConfig.blockSizeVertical * 15,
+                      width: DeviceSizeConfig.blockSizeHorizontal! * 30,
+                      height: DeviceSizeConfig.blockSizeVertical! * 15,
                       alignment: Alignment.center,
                       child: MyTextStyle(
                         text: 'TOP = ' + top.toString(),
@@ -124,11 +124,11 @@ class _WorkingScreenState extends State<WorkingScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         MyButton(
-                          onPressed: pushenable ? () => push(c) : null,
+                          onPressed: pushenable ? () => push(c) : () {},
                           text: 'PUSH',
                         ),
                         MyButton(
-                          onPressed: popenable ? () => pop() : null,
+                          onPressed: popenable ? () => pop() : () {},
                           text: 'POP',
                         ),
                       ],

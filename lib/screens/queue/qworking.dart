@@ -15,10 +15,10 @@ class QWorkingScreen extends StatefulWidget {
 
 class _QWorkingScreenState extends State<QWorkingScreen> {
   int c = 1;
-  TextEditingController controller;
+  TextEditingController? controller;
   bool deqenable = false;
   bool enqenable = true;
-  int rear, front;
+  int? rear, front;
   final q = Queue<dynamic>();
   String fullmessage = '';
   String emptymessage = '';
@@ -45,7 +45,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
         rear = 1;
         deqenable = false;
       } else {
-        rear = rear + 1;
+        rear = rear! + 1;
         c = c + 1;
         fullmessage = '';
         emptymessage = '';
@@ -53,13 +53,13 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
         deqenable = true;
       }
     });
-    return rear;
+    return rear!;
   }
 
   int deq() {
     q.removeFirst();
     setState(() {
-      if (front > rear) {
+      if (front! > rear!) {
         enqenable = false;
         emptymessage = 'Queue Underflow !!';
         fullmessage = 'Oops! front>rear ';
@@ -71,10 +71,10 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
         fullmessage = '';
         emptymessage = '';
         enqenable = true;
-        front = front + 1;
+        front = front! + 1;
       }
     });
-    return rear;
+    return rear!;
   }
 
   int clearQueue() {
@@ -88,7 +88,7 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
       fullmessage = '';
       emptymessage = '';
     });
-    return rear;
+    return rear!;
   }
 
   @override
@@ -107,8 +107,8 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                     Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
-                        height: DeviceSizeConfig.blockSizeVertical * 20,
+                        width: DeviceSizeConfig.blockSizeHorizontal! * 30,
+                        height: DeviceSizeConfig.blockSizeVertical! * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: 'FRONT = ' + front.toString(),
@@ -121,8 +121,8 @@ class _QWorkingScreenState extends State<QWorkingScreen> {
                     Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
-                        height: DeviceSizeConfig.blockSizeVertical * 20,
+                        width: DeviceSizeConfig.blockSizeHorizontal! * 30,
+                        height: DeviceSizeConfig.blockSizeVertical! * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: 'REAR = ' + rear.toString(),

@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Header extends StatelessWidget {
-  final String title;
+  final String? title;
   Header({@required this.title});
   @override
   Widget build(BuildContext context) {
     DeviceSizeConfig()..init(context);
     return Container(
-      height: DeviceSizeConfig.blockSizeVertical * 15,
+      height: DeviceSizeConfig.blockSizeVertical! * 15,
       width: DeviceSizeConfig.screenWidth,
       margin: EdgeInsets.only(bottom: 20 * 1.5),
       child: Stack(
         children: [
           Container(
-            height: DeviceSizeConfig.blockSizeVertical * 20 - 10,
+            height: DeviceSizeConfig.blockSizeVertical! * 20 - 10,
             decoration: BoxDecoration(
               color: Get.isDarkMode == true ? Colors.white : Colors.black,
               borderRadius: BorderRadius.only(
@@ -36,9 +36,9 @@ class Header extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: DeviceSizeConfig.screenWidth - 120,
+                  width: DeviceSizeConfig.screenWidth! - 120,
                   child: MyTextStyle(
-                    text: title,
+                    text: title!,
                     color: Get.isDarkMode ? Colors.black : Colors.white,
                     bold: 'yes',
                   ),

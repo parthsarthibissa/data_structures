@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 class BasePage extends StatelessWidget {
   const BasePage({this.dsaData, this.button, this.image, @required this.title});
 
-  final Widget button;
-  final String dsaData;
-  final Image image;
-  final String title;
+  final Widget? button;
+  final String? dsaData;
+  final Image? image;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,17 @@ class BasePage extends StatelessWidget {
             drawer: MyAppDrawer(),
             body: ListView(
               children: [
-                Header(title: title),
+                Header(title: title!),
                 SingleChildScrollView(
                   padding: EdgeInsets.all(20),
                   scrollDirection: Axis.vertical,
                   child: Column(
                     children: [
-                      image,
+                      image!,
                       MyTextStyle(
-                        text: dsaData,
+                        text: dsaData!,
                       ),
-                      button,
+                      button!,
                       Divider(),
                     ],
                   ),

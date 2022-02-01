@@ -35,7 +35,7 @@ class MyAppDrawer extends StatelessWidget {
                     text: 'HomeScreen',
                     color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
-                  return Navigator.popAndPushNamed(context, '/home');
+                  Navigator.popAndPushNamed(context, '/home');
                 },
               )),
           SizedBox(height: 5),
@@ -47,7 +47,7 @@ class MyAppDrawer extends StatelessWidget {
                     text: 'Stack',
                     color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
-                  return Navigator.popAndPushNamed(context, '/stack');
+                  Navigator.popAndPushNamed(context, '/stack');
                 },
               )),
           SizedBox(height: 5),
@@ -59,7 +59,7 @@ class MyAppDrawer extends StatelessWidget {
                     text: 'Queue',
                     color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
-                  return Navigator.popAndPushNamed(context, '/queue');
+                  Navigator.popAndPushNamed(context, '/queue');
                 },
               )),
           SizedBox(height: 5),
@@ -71,7 +71,7 @@ class MyAppDrawer extends StatelessWidget {
                     text: 'LinkedList',
                     color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
-                  return Navigator.popAndPushNamed(context, '/LLdata');
+                  Navigator.popAndPushNamed(context, '/LLdata');
                 },
               )),
           SizedBox(height: 5),
@@ -83,7 +83,7 @@ class MyAppDrawer extends StatelessWidget {
                     text: 'App Settings',
                     color: Get.isDarkMode ? Colors.black : Colors.white),
                 onTap: () {
-                  return Navigator.popAndPushNamed(context, '/settings');
+                  Navigator.popAndPushNamed(context, '/settings');
                 },
               )),
         ],

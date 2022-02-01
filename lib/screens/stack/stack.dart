@@ -29,7 +29,7 @@ Stack Implementation
 A stack can be implemented by means of Array, Structure, Pointer, and Linked List. Stack can either be a fixed size one or it may have a sense of dynamic resizing. Here, we are going to implement stack using arrays, which makes it a fixed size stack implementation.''',
         button: MyButton(
           onPressed: () {
-            return Navigator.of(context).popAndPushNamed('/working');
+            Navigator.of(context).popAndPushNamed('/working');
           },
           text: 'Working Of Stack',
         ));

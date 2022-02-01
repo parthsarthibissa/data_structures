@@ -27,10 +27,10 @@ class Linked extends LinkedListEntry<Linked> {
 class _LinkedListWorkingState extends State<LinkedListWorking> {
   String fullmessage = '';
   var list = LinkedList<Linked>();
-  int a;
+  int? a;
   String datapart = '';
   String addresspart = '';
-  bool delbegenable;
+  bool? delbegenable;
 
   void initState() {
     a = 10;
@@ -39,7 +39,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
   }
 
   void adder() {
-    a = a + 10;
+    a = a! + 10;
   }
 
   String insbeg(a) {
@@ -154,18 +154,18 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                     Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
-                        height: DeviceSizeConfig.blockSizeVertical * 20,
+                        width: DeviceSizeConfig.blockSizeHorizontal! * 30,
+                        height: DeviceSizeConfig.blockSizeVertical! * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
-                          text: datapart == null ? 'Null' : datapart,
+                          text: datapart=='' ? 'Null' : datapart,
                           color: Colors.black,
                         ),
                         decoration: BoxDecoration(
                             color: Get.isDarkMode ? Colors.white : Colors.black,
                             shape: BoxShape.rectangle,
                             border: Border.all(
-                                color: Colors.lightBlueAccent[100],
+                                color: Colors.lightBlueAccent,
                                 width: 6,
                                 style: BorderStyle.solid))),
                     MyTextStyle(
@@ -174,8 +174,8 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                     Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        width: DeviceSizeConfig.blockSizeHorizontal * 30,
-                        height: DeviceSizeConfig.blockSizeVertical * 20,
+                        width: DeviceSizeConfig.blockSizeHorizontal! * 30,
+                        height: DeviceSizeConfig.blockSizeVertical! * 20,
                         alignment: Alignment.center,
                         child: MyTextStyle(
                           text: addresspart,
@@ -185,7 +185,7 @@ class _LinkedListWorkingState extends State<LinkedListWorking> {
                             color: Get.isDarkMode ? Colors.white : Colors.black,
                             shape: BoxShape.rectangle,
                             border: Border.all(
-                                color: Colors.lightBlueAccent[100],
+                                color: Colors.lightBlueAccent,
                                 width: 6,
                                 style: BorderStyle.solid))),
                   ],

@@ -27,7 +27,7 @@ Queue Implementation
 As in stacks, a queue can also be implemented using Arrays, Linked-lists, Pointers and Structures. For the sake of simplicity, we shall implement queues using one-dimensional array.''',
       button: MyButton(
         onPressed: () {
-          return Navigator.of(context).popAndPushNamed('/qworking');
+         Navigator.of(context).popAndPushNamed('/qworking');
         },
         text: 'Working Of Queue',
       ),

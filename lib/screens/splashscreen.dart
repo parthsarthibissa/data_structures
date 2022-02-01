@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SplashScreenView(
       imageSrc: 'assets/images.png',
-      home: HomePage(),
+      navigateRoute: HomePage(),
       duration: 5000,
       backgroundColor: Get.isDarkMode ? Colors.black87 : Colors.white,
       text: 'Data Structures And Algorithms',
